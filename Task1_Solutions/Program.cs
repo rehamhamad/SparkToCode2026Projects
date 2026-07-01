@@ -1,4 +1,7 @@
-﻿namespace Task1_Solutions
+﻿using Microsoft.VisualBasic;
+using System.Drawing;
+
+namespace Task1_Solutions
 {
     internal class Program
     {
@@ -145,6 +148,60 @@
                     Console.WriteLine("Invalid grade");
                     break;
             }
+
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //Task 6 - Temperature Converter
+            //Ask the user to enter a temperature in Celsius, convert it to Fahrenheit, then classify the weather based on the
+            //Celsius value.
+            //Requirements:
+            //• Conversion formula: F = (C * 9 / 5) + 32.
+            //• Classification: below 10 → "Cold", 10 to 30 → "Mild", above 30 → "Hot".
+            //• Print the converted Fahrenheit value and the weather classification
+
+            Console.WriteLine("Enter the temperature in Celsius: ");
+            float Ctemp = float.Parse(Console.ReadLine());
+
+            float Ftemp = (Ctemp * 9 / 5) + 32;
+            if (Ftemp < 10)
+            {
+                Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Cold");
+            }
+            else if (Ftemp >= 10 && Ftemp <= 30)
+            {
+                Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Mild");
+            }
+            else
+            {
+                Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Hot");
+            }
+
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
