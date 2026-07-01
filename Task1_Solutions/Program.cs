@@ -24,7 +24,7 @@ namespace Task1_Solutions
             //• Print each value on its own line with a clear label.
             //Sample output: Name: Sara, Age: 21, Height: 1.65, Student: True
 
-            Console.WriteLine("Task 1 : Personal Info Card");
+            Console.WriteLine("Task 1 : Personal Info Card\n");
             string name = "Reham";
             int age = 22;
             double hight = 1.54;
@@ -42,7 +42,7 @@ namespace Task1_Solutions
             //• Area = length * width, Perimeter = 2 * (length + width).
             //• Print both results with descriptive labels.
 
-            Console.WriteLine("Task 2 : Reactangle Calculator");
+            Console.WriteLine("Task 2 : Reactangle Calculator\n");
             Console.Write("Enter the length of the rectangle: ");
             double length = double.Parse(Console.ReadLine());
             Console.Write("Enter the width of the triangle: ");
@@ -62,7 +62,7 @@ namespace Task1_Solutions
             //• Use the modulus operator (%) to check divisibility by 2.
             //• Use an if-else statement to decide which message to print.
 
-            Console.WriteLine("Task 3 - Even or Odd Checker");
+            Console.WriteLine("Task 3 - Even or Odd Checker\n");
             Console.Write("Enter Your Number: ");
             int num = int.Parse(Console.ReadLine());
             int check = num % 2;
@@ -86,10 +86,10 @@ namespace Task1_Solutions
             //• Convert the yes / no answer into a bool value before using it in your condition.
             //• Use the logical AND operator (&&) in your if condition
 
-            Console.WriteLine("Task 4 - Voting Eligibility ");
-            Console.WriteLine("Enter Your Age: ");
+            Console.WriteLine("Task 4 - Voting Eligibility\n");
+            Console.Write("Enter Your Age: ");
             int Age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Do you have a valid national ID? (yes/no): ");
+            Console.Write("Do you have a valid national ID? (yes/no): ");
             string id = Console.ReadLine().ToLower();   // Read and Convert input to lowercase
 
             bool value;         // create a boolean variable to store the result of the ID check
@@ -127,7 +127,10 @@ namespace Task1_Solutions
             //• Map: A → Excellent, B → Very Good, C → Good, D → Pass, F → Fail.
             //• Print "Invalid grade" for any other character using the default case
 
-            Console.WriteLine("\nEnter Your Grade (A, B, C, D, or F): ");
+            Console.WriteLine("\nTask 5 - Grade Letter Lookup\n");
+
+
+            Console.Write("Enter Your Grade (A, B, C, D, or F): ");
             char grade = char.Parse(Console.ReadLine().ToUpper());
 
             switch (grade)
@@ -164,15 +167,18 @@ namespace Task1_Solutions
             //• Classification: below 10 → "Cold", 10 to 30 → "Mild", above 30 → "Hot".
             //• Print the converted Fahrenheit value and the weather classification
 
-            Console.WriteLine("\nEnter the temperature in Celsius: ");
+            Console.WriteLine("\nTask 6 - Temperature Converter\n");
+
+
+            Console.Write("Enter the temperature in Celsius: ");
             float Ctemp = float.Parse(Console.ReadLine());
 
             float Ftemp = (Ctemp * 9 / 5) + 32;
-            if (Ftemp < 10)
+            if (Ctemp < 10)
             {
                 Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Cold");
             }
-            else if (Ftemp >= 10 && Ftemp <= 30)
+            else if (Ctemp >= 10 && Ctemp <= 30)
             {
                 Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Mild");
             }
@@ -193,14 +199,17 @@ namespace Task1_Solutions
             //• Use if / else if / else to determine the correct category.
             //• Print the category name along with the final price
 
-            Console.WriteLine("\nEnter Your Age: ");
+            Console.WriteLine("\nTask 7 - Movie Ticket Pricing\n ");
+
+
+            Console.Write("Enter Your Age: ");
             int AGE = int.Parse(Console.ReadLine());
 
-            if (AGE >=0 && AGE <= 12)
+            if (AGE >= 0 && AGE <= 12)
             {
                 Console.WriteLine("Category: Chiled (0 - 12 ), Price; 2.000 OMRT");
             }
-            else if (AGE >=13 && AGE <= 59)
+            else if (AGE >= 13 && AGE <= 59)
             {
                 Console.WriteLine("Category: Adults ( 13 - 59 ), Price: 5.000 OMR");
             }
