@@ -26,6 +26,26 @@
 
             Console.WriteLine("Name:" + name + ", Age:" + age + ", Hight:" + hight + ", Student:" + isStudent + "\n");
 
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+            //Task 2 - Rectangle Calculator
+
+            //Ask the user to enter the length and width of a rectangle as input, then calculate and display its area and perimeter.
+            //Requirements:
+            //• Read both values using Console.ReadLine and convert them to an appropriate numeric type.
+            //• Area = length * width, Perimeter = 2 * (length + width).
+            //• Print both results with descriptive labels.
+
+            Console.WriteLine("Task 2 : Reactangle Calculator");
+            Console.Write("Enter the length of the rectangle: ");
+            double length = double.Parse(Console.ReadLine());
+            Console.Write("Enter the width of the triangle: ");
+            double width = double.Parse(Console.ReadLine());
+            double area = length * width;
+            double perimeter = 2 * (length + width);
+            Console.WriteLine("Area = " + area + "\nPerimeter = " + perimeter + "\n");
+
+
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
     }
