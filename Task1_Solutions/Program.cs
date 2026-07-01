@@ -71,6 +71,47 @@
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            //Task 4 - Voting Eligibility
+
+            //Ask the user to enter their age and whether they hold a valid national ID(yes/ no). Determine whether the person is
+            //eligible to vote.
+            //Requirements:
+            //• A person is eligible only if their age is 18 or above AND they hold a valid ID.
+            //• Convert the yes / no answer into a bool value before using it in your condition.
+            //• Use the logical AND operator (&&) in your if condition
+
+            Console.WriteLine("Task 4 - Voting Eligibility ");
+            Console.WriteLine("Enter Your Age: ");
+            int Age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Do you have a valid national ID? (yes/no): ");
+            string id = Console.ReadLine().ToLower();   // Read and Convert input to lowercase
+
+            bool value;         // create a boolean variable to store the result of the ID check
+            if (id == "yes")
+            {
+                value = true;
+            }
+            else if (id == "no")
+            {
+                value = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input");
+                value = false;  // set value to false for invalid input
+            }
+
+            if (Age >= 18 && value == true)
+            {
+                Console.WriteLine("You are eligible to vote");
+            }
+            else
+            {
+                Console.WriteLine("You are not eligible to vote");
+            }
+
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
