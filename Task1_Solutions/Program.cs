@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualBasic;
 using System.Drawing;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace Task1_Solutions
 {
@@ -153,6 +156,7 @@ namespace Task1_Solutions
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Task 6 - Temperature Converter
+
             //Ask the user to enter a temperature in Celsius, convert it to Fahrenheit, then classify the weather based on the
             //Celsius value.
             //Requirements:
@@ -160,7 +164,7 @@ namespace Task1_Solutions
             //• Classification: below 10 → "Cold", 10 to 30 → "Mild", above 30 → "Hot".
             //• Print the converted Fahrenheit value and the weather classification
 
-            Console.WriteLine("Enter the temperature in Celsius: ");
+            Console.WriteLine("\nEnter the temperature in Celsius: ");
             float Ctemp = float.Parse(Console.ReadLine());
 
             float Ftemp = (Ctemp * 9 / 5) + 32;
@@ -180,8 +184,30 @@ namespace Task1_Solutions
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            //Task 7 - Movie Ticket Pricing
 
+            //Ask the user to enter their age and calculate the ticket price based on the following age groups: 0 - 12, 13 - 59, and 60
+            //and above.
+            //Requirements:
+            //• Children(0 - 12): 2.000 OMR, Adults(13 - 59): 5.000 OMR, Seniors(60 +): 3.000 OMR.
+            //• Use if / else if / else to determine the correct category.
+            //• Print the category name along with the final price
 
+            Console.WriteLine("\nEnter Your Age: ");
+            int AGE = int.Parse(Console.ReadLine());
+
+            if (AGE >=0 && AGE <= 12)
+            {
+                Console.WriteLine("Category: Chiled (0 - 12 ), Price; 2.000 OMRT");
+            }
+            else if (AGE >=13 && AGE <= 59)
+            {
+                Console.WriteLine("Category: Adults ( 13 - 59 ), Price: 5.000 OMR");
+            }
+            else
+            {
+                Console.WriteLine("Category: Seniors ( 60 + ), Price: 3.000 OMR");
+            }
 
 
 
