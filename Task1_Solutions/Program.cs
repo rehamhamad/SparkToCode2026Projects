@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task1_Solutions
 {
@@ -220,8 +221,43 @@ namespace Task1_Solutions
 
 
 
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+            //Task 8 - Restaurant Bill with Membership Discount
+            //Ask the user to enter their total bill amount and whether they are a loyalty member(yes/ no). Apply a discount only
+            //when both conditions below are satisfied.
+            //Requirements:
+            //• A 15 % discount applies only if the bill is greater than 20 OMR AND the customer is a member.
+            //• Use the logical AND operator (&&) to combine both conditions in one if statement.
+            //• Print the original bill, the discount amount(if any), and the final amount to pay.
+
+
+
+            Console.WriteLine("\nTask 8 - Restaurant Bill with Membership Discount\n");
+            Console.Write("Enter Your Total Bill Amount: ");
+            float bill = float.Parse(Console.ReadLine());
+            Console.Write("Do you have a loyalty member? (yes / no) ");
+            string member = Console.ReadLine().ToLower();
+
+            double dis15 = 0.15 * bill;
+            double discount = bill - dis15;
+
+            bool val;
+            if ( member == "yes" && bill > 20)
+            {
+                val = true;
+                Console.WriteLine("Original Bill: " + bill + " OMR");
+                Console.WriteLine("Discount Amount: " + dis15 + " OMR");
+                Console.WriteLine("Bill after 15% discount: " + discount + " OMR");
+
+            }
+            else
+            {
+                val = false;
+                Console.WriteLine("There is no Discount applied");
+                Console.WriteLine("Original Bill: " + bill + " OMR");
+            }
 
 
 
