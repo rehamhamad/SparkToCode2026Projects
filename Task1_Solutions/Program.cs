@@ -113,6 +113,38 @@
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            //Task 5 - Grade Letter Lookup
+
+            //Ask the user to enter a single character representing a grade('A', 'B', 'C', 'D', or 'F') and print the meaning of that
+            //grade using a switch-case statement.
+            //Requirements:
+            //• Map: A → Excellent, B → Very Good, C → Good, D → Pass, F → Fail.
+            //• Print "Invalid grade" for any other character using the default case
+
+            Console.WriteLine("\nEnter Your Grade (A, B, C, D, or F): ");
+            char grade = char.Parse(Console.ReadLine().ToUpper());
+
+            switch (grade)
+            {
+                case 'A':
+                    Console.WriteLine("Excellent");
+                    break;
+                case 'B':
+                    Console.WriteLine("Very Good");
+                    break;
+                case 'C':
+                    Console.WriteLine("Good");
+                    break;
+                case 'D':
+                    Console.WriteLine("Pass");
+                    break;
+                case 'F':
+                    Console.WriteLine("Fail");
+                    break;
+                default:
+                    Console.WriteLine("Invalid grade");
+                    break;
+            }
 
 
 
