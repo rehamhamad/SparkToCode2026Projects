@@ -47,6 +47,34 @@
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //Task 3 - Even or Odd Checker
+
+
+            //Ask the user to enter a whole number, then determine whether it is even or odd and print the result.
+            // Requirements:
+            //• Use the modulus operator (%) to check divisibility by 2.
+            //• Use an if-else statement to decide which message to print.
+
+            Console.WriteLine("Task 3 - Even or Odd Checker");
+            Console.Write("Enter Your Number: ");
+            int num = int.Parse(Console.ReadLine());
+            int check = num % 2;
+            if (check == 0)
+            {
+                Console.WriteLine("The number is even \n");
+            }
+            else
+            {
+                Console.WriteLine("The number is odd \n");
+            }
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
         }
     }
 }
