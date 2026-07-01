@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task1_Solutions
@@ -11,10 +12,6 @@ namespace Task1_Solutions
     {
         static void Main(string[] args)
         {
-            //Easy 5 Tasks 
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
             //Task 1: Personal Info Card 
 
             //Declare variables to store a person's name (string), age (int), height in meters (double), and whether they are a
@@ -63,7 +60,7 @@ namespace Task1_Solutions
             //• Use the modulus operator (%) to check divisibility by 2.
             //• Use an if-else statement to decide which message to print.
 
-            Console.WriteLine("Task 3 - Even or Odd Checker\n");
+            Console.WriteLine("\nTask 3 - Even or Odd Checker\n");
             Console.Write("Enter Your Number: ");
             int num = int.Parse(Console.ReadLine());
             int check = num % 2;
@@ -129,8 +126,6 @@ namespace Task1_Solutions
             //• Print "Invalid grade" for any other character using the default case
 
             Console.WriteLine("\nTask 5 - Grade Letter Lookup\n");
-
-
             Console.Write("Enter Your Grade (A, B, C, D, or F): ");
             char grade = char.Parse(Console.ReadLine().ToUpper());
 
@@ -169,8 +164,6 @@ namespace Task1_Solutions
             //• Print the converted Fahrenheit value and the weather classification
 
             Console.WriteLine("\nTask 6 - Temperature Converter\n");
-
-
             Console.Write("Enter the temperature in Celsius: ");
             float Ctemp = float.Parse(Console.ReadLine());
 
@@ -188,7 +181,6 @@ namespace Task1_Solutions
                 Console.WriteLine("The Temperature in Fehrenhite is: " + Ftemp + " The weather is Hot");
             }
 
-
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Task 7 - Movie Ticket Pricing
@@ -201,8 +193,6 @@ namespace Task1_Solutions
             //• Print the category name along with the final price
 
             Console.WriteLine("\nTask 7 - Movie Ticket Pricing\n ");
-
-
             Console.Write("Enter Your Age: ");
             int AGE = int.Parse(Console.ReadLine());
 
@@ -219,10 +209,7 @@ namespace Task1_Solutions
                 Console.WriteLine("Category: Seniors ( 60 + ), Price: 3.000 OMR");
             }
 
-
-
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
             //Task 8 - Restaurant Bill with Membership Discount
             //Ask the user to enter their total bill amount and whether they are a loyalty member(yes/ no). Apply a discount only
@@ -231,8 +218,6 @@ namespace Task1_Solutions
             //• A 15 % discount applies only if the bill is greater than 20 OMR AND the customer is a member.
             //• Use the logical AND operator (&&) to combine both conditions in one if statement.
             //• Print the original bill, the discount amount(if any), and the final amount to pay.
-
-
 
             Console.WriteLine("\nTask 8 - Restaurant Bill with Membership Discount\n");
             Console.Write("Enter Your Total Bill Amount: ");
@@ -259,13 +244,46 @@ namespace Task1_Solutions
                 Console.WriteLine("Original Bill: " + bill + " OMR");
             }
 
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            //Task 9 - Day Name Finder
+            //Ask the user to enter a number from 1 to 7 representing a day of the week, then print the full day name using a
+            //switch-case statement.
+            //Requirements:
+            //• 1 → Sunday, 2 → Monday, ... 7 → Saturday(define the full mapping yourself).
+            //• Print "Invalid day number" for any value outside 1 - 7 using the default case.
 
-
-
-
-
-
+            Console.WriteLine("Task 9 - Day Name Finder");
+            Console.Write("Enter a number from 1 to 7 representing a day of the week: ");
+            int day = int.Parse(Console.ReadLine());
+            switch (day)
+            {
+                case 1:
+                    Console.WriteLine("Sunday");
+                    break;
+                case 2:
+                    Console.WriteLine("Monday");
+                    break;
+                case 3:
+                    Console.WriteLine("Tuesday");
+                    break;
+                case 4:
+                    Console.WriteLine("Wednesday");
+                    break;
+                case 5:
+                    Console.WriteLine("Thursday");
+                    break;
+                case 6:
+                    Console.WriteLine("Friday");
+                    break;
+                case 7:
+                    Console.WriteLine("Saturday");
+                    break;
+                default:
+                    Console.WriteLine("Invalid day number");
+                    break;
+            }
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
