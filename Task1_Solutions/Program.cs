@@ -1,9 +1,12 @@
 ﻿using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Net.Sockets;
+using System.Numerics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Xml.Linq;
+using static System.Net.WebRequestMethods;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task1_Solutions
@@ -285,9 +288,67 @@ namespace Task1_Solutions
             }
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            //Task 10 - Mini Calculator
 
+            //Ask the user to enter two numbers and an operator character(+, -, *, /, or %).Perform the matching operation and
+            //print the result using a switch-case statement on the operator.
+            //Requirements:
+            //• Support the five operators: +, -, *, /, %.
+            //• Before performing division or modulus, check with an if statement that the second number is not zero; if it is zero,
+            //print "Cannot divide by zero" instead of performing the operation.
+            //• Print "Invalid operator" for any other character using the default case.
 
+            Console.WriteLine("\nTask 10 - Mini Calculator\n");
+            Console.Write("Enter your first number:");
+            float num1 = float.Parse(Console.ReadLine());
+            Console.Write("Enter your second number:");
+            float num2 = float.Parse(Console.ReadLine());
+            Console.WriteLine("Enter two numbers and an operator (+, -, *, /, or %): ");
+            string ope = Console.ReadLine();
+            float addition = num1 + num2;
+            float subtraction = num1 - num2;
+            float multiplication = num1 * num2;
+            float division = num1 / num2;
+            float reminder = num1 % num2;
+            
+            switch (ope)
+            {
+                case "+":
+                    Console.Write(addition);
+                    break;
+                case "-":
+                    Console.Write(subtraction);
+                    break;
+                case "*":
+                    Console.Write(multiplication);
+                    break;
+                case "/":
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Cannot divide by zero");
+                    }
+                    else
+                    {
+                        Console.Write(division);
+                    }
+                    break;
 
+                case "%":
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Cannot divide by zero");
+                    }
+                    else
+                    {
+                        Console.Write(reminder);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid operator");
+                    break;
+
+            }
+            
 
 
 
