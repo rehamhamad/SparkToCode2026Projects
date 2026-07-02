@@ -4,7 +4,9 @@ using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq.Expressions;
 using System.Net.Sockets;
+using System.Numerics;
 using System.Runtime.Intrinsics.X86;
+using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task2_Solutions
@@ -103,6 +105,7 @@ namespace Task2_Solutions
                 guss = int.Parse(Console.ReadLine());
 
                 gussCount++;
+
                 if (guss > secretNumber)
                 {
                     Console.WriteLine("Too high");
@@ -120,6 +123,40 @@ namespace Task2_Solutions
             }
             while ( guss != secretNumber);
             Console.WriteLine("you guessed the secret number in " + gussCount + " attempts.");
+
+            ///////////////////////////////////////////////////////////////////
+
+
+            //            Task 6 - Safe Division Calculator
+            //Ask the user to enter two numbers and divide the first by the second, using try-catch to handle any errors safely.
+            //Requirements:
+            //• Wrap the input conversion and division inside a try block.
+            //• Catch a DivideByZeroException and print a friendly message if the second number is zero.
+            //• Catch a general Exception(or FormatException) and print a friendly message if the input is not a valid number.
+            //• Print the division result only when no error occurs.
+
+
+            try
+            {
+                Console.Write("\nEnter the first number: ");
+                int firstNumber = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter the second number: ");
+                int secondNumber = int.Parse(Console.ReadLine());
+                int result = firstNumber / secondNumber;
+
+                Console.WriteLine("Result = " + result );
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: You cannot divide by zero.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Please enter valid numbers only.");
+            }
+
+
 
 
 
