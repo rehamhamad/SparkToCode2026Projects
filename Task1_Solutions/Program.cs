@@ -234,7 +234,7 @@ namespace Task1_Solutions
             double discount = bill - dis15;
 
             bool val;
-            if ( member == "yes" && bill > 20)
+            if (member == "yes" && bill > 20)
             {
                 val = true;
                 Console.WriteLine("Original Bill: " + bill + " OMR");
@@ -312,7 +312,7 @@ namespace Task1_Solutions
             float multiplication = num1 * num2;
             float division = num1 / num2;
             float reminder = num1 % num2;
-            
+
             switch (ope)
             {
                 case "+":
@@ -368,7 +368,7 @@ namespace Task1_Solutions
             // Task 11 - Loan Eligibility System
 
             Console.Write("\nEnter your age: \n");
-            int UserAe = int.Parse(Console.ReadLine());
+            int UserAge = int.Parse(Console.ReadLine());
 
             Console.Write("Enter your monthly income (OMR): ");
             double income = double.Parse(Console.ReadLine());
@@ -378,27 +378,29 @@ namespace Task1_Solutions
 
             bool hasLoan = existingLoan == "yes";
 
-            if (UserAe >= 21 && UserAe <= 60 && income >= 400 && !hasLoan)
+            if (UserAge >= 21 && UserAge <= 60 && income >= 400 && !hasLoan)
             {
                 Console.WriteLine("You are eligible for the loan.");
             }
             else
             {
-                if (UserAe < 21 && UserAe > 60)
+                if (UserAge < 21 || UserAge > 60)
                 {
                     Console.WriteLine("Not eligible: Age is out of range.");
                 }
 
-                else if (income < 400)
+                if (income < 400)
                 {
                     Console.WriteLine("Not eligible: Income is too low.");
                 }
 
-                else
+                if (hasLoan)
                 {
-                    Console.WriteLine("Not eligible: You already have an existing loan.");
+                    Console.WriteLine("Not eligible: You have an existing loan.");
                 }
             }
+
+
 
 
         }
