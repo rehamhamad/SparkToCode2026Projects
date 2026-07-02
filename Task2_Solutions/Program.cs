@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Linq.Expressions;
 using System.Runtime.Intrinsics.X86;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -41,13 +42,24 @@ namespace Task2_Solutions
             for (int i = 1 ; i <= N; i++) {
                 sum += i;
             }
-            Console.WriteLine($"The sum of all whole numbers from 1 to" + N + " is "+ sum );
+            Console.WriteLine($"The sum of all whole numbers from 1 to " + N + " is "+ sum );
 
             ///////////////////////////////////////////////////////////////////
 
+//            Task 3 - Multiplication Table
+//Ask the user to enter a number, then print its multiplication table from 1 to 10 using a single for loop.
+//Requirements:
+//• Each line should show the full expression, e.g. "5 x 3 = 15".
+//• Use only one loop - no nested loops
 
 
-
+            Console.Write("Enter a number to print its multiplication table: ");
+            int num = int.Parse(Console.ReadLine());
+            for ( int i = 0; i <=10; i++)
+            {
+                int mul = i * num;
+                Console.WriteLine(num + " x " + i + " = " + mul);
+            }
 
         }
     }
