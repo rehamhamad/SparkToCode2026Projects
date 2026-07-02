@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualBasic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
+using System.Text;
 using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -348,11 +350,55 @@ namespace Task1_Solutions
                     break;
 
             }
-            
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //Task 11 - Loan Eligibility System
+
+            //A bank wants a quick eligibility check for a personal loan.Ask the user to enter their age, monthly income, and
+            //whether they have an existing loan(yes / no).Decide whether they are eligible.
+            //Requirements:
+            //• Eligible if: age is between 21 and 60(inclusive) AND monthly income is at least 400 OMR AND the applicant does
+            //NOT have an existing loan.
+            //• Combine the three conditions using && and! inside a single if-else statement.
+            //• If not eligible, print the specific reason(age out of range, income too low, or has an existing loan). Decide for
+            //yourself how to structure the conditions to report the correct reason
 
 
+            // Task 11 - Loan Eligibility System
 
+            Console.Write("\nEnter your age: \n");
+            int UserAe = int.Parse(Console.ReadLine());
 
+            Console.Write("Enter your monthly income (OMR): ");
+            double income = double.Parse(Console.ReadLine());
+
+            Console.Write("Do you have an existing loan? (yes/no): ");
+            string existingLoan = Console.ReadLine().ToLower();
+
+            bool hasLoan = existingLoan == "yes";
+
+            if (UserAe >= 21 && UserAe <= 60 && income >= 400 && !hasLoan)
+            {
+                Console.WriteLine("You are eligible for the loan.");
+            }
+            else
+            {
+                if (UserAe < 21 && UserAe > 60)
+                {
+                    Console.WriteLine("Not eligible: Age is out of range.");
+                }
+
+                else if (income < 400)
+                {
+                    Console.WriteLine("Not eligible: Income is too low.");
+                }
+
+                else
+                {
+                    Console.WriteLine("Not eligible: You already have an existing loan.");
+                }
+            }
 
 
         }
