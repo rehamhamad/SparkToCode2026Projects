@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Data.SqlTypes;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq.Expressions;
+using System.Net.Sockets;
 using System.Runtime.Intrinsics.X86;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -18,7 +20,7 @@ namespace Task2_Solutions
             //• Use a for loop that decreases the counter on each iteration.
             //• Print one number per line during the countdown.
 
-            Console.Write("Enter you starting number for the countdown: ");
+            Console.Write("\nEnter you starting number for the countdown: ");
             int start = int.Parse(Console.ReadLine());
             for (int i = start; i >= 1; i--)
             {
@@ -36,7 +38,7 @@ namespace Task2_Solutions
             //• Print the final sum only once, after the loop has finished.
 
 
-            Console.Write("Enter a positive whole number: ");
+            Console.Write("\nEnter a positive whole number: ");
             int N = int.Parse(Console.ReadLine());
             int sum = 0;
             for (int i = 1 ; i <= N; i++) {
@@ -53,7 +55,7 @@ namespace Task2_Solutions
 //• Use only one loop - no nested loops
 
 
-            Console.Write("Enter a number to print its multiplication table: ");
+            Console.Write("\nEnter a number to print its multiplication table: ");
             int num = int.Parse(Console.ReadLine());
             for ( int i = 0; i <=10; i++)
             {
@@ -70,7 +72,7 @@ namespace Task2_Solutions
 //• Use a while loop, since the number of attempts is unknown in advance.
 //• Print "Incorrect password, try again" after each wrong attempt.
 
-            Console.Write("Enter the password: ");
+            Console.Write("\nEnter the password: ");
             string pass = Console.ReadLine();
             while (pass != "Spark2026")
             {
@@ -80,11 +82,44 @@ namespace Task2_Solutions
             }
             Console.WriteLine("Access Granted");
 
+            ///////////////////////////////////////////////////////////////////
 
 
+            //            Task 5 - Number Guessing Game
+            //Fix a secret number in the code(for example, 42).Use a do -while loop to let the user keep guessing the number,
+            //printing "Too high" or "Too low" after each wrong guess. When the user guesses correctly, print how many attempts
+            //it took.
+            //Requirements:
+            //• Use a do -while loop, since the user must be allowed to guess at least once.
+            //• Use a counter variable to track the number of attempts.
+            //• Use if / else if / else to compare the guess with the secret number
 
+            int secretNumber = 42;
+            int gussCount = 0;
+            int guss;
+            do
+            {
+                Console.WriteLine("\nGuess the secret number (between 1 and 100): ");
+                guss = int.Parse(Console.ReadLine());
 
+                gussCount++;
+                if (guss > secretNumber)
+                {
+                    Console.WriteLine("Too high");
 
+                }
+                else if (guss < secretNumber)
+                {
+                    Console.WriteLine("Too low");
+                }
+                else
+                {
+                    Console.WriteLine("Congratulations! ");
+
+                }
+            }
+            while ( guss != secretNumber);
+            Console.WriteLine("you guessed the secret number in " + gussCount + " attempts.");
 
 
 
