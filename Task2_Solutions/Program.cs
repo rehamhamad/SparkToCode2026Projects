@@ -61,6 +61,34 @@ namespace Task2_Solutions
                 Console.WriteLine(num + " x " + i + " = " + mul);
             }
 
+            ///////////////////////////////////////////////////////////////////
+
+//            Task 4 - Password Retry
+//The correct password is fixed in the code as "Spark2026".Use a while loop to keep asking the user to enter the
+//password until they type it correctly, then print "Access Granted".
+//Requirements:
+//• Use a while loop, since the number of attempts is unknown in advance.
+//• Print "Incorrect password, try again" after each wrong attempt.
+
+            Console.Write("Enter the password: ");
+            string pass = Console.ReadLine();
+            while (pass != "Spark2026")
+            {
+                Console.WriteLine("Incorrect password, try again");
+                Console.Write("Enter the password: ");
+                pass = Console.ReadLine();
+            }
+            Console.WriteLine("Access Granted");
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
