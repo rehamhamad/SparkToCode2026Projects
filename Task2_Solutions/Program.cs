@@ -1,11 +1,13 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
 using System.Timers;
@@ -231,9 +233,55 @@ namespace Task2_Solutions
             }
             Console.WriteLine("The sum of all even numbers from 1 to " + Pnum + " is " + sumEven);
 
+
+            ///////////////////////////////////////////////////////////////////
+
+            //            Task 9 - Validated Positive Number Input
+            //Build a small program that keeps asking the user to enter a positive whole number until a valid one is provided, then
+            //calculates and prints the sum of all whole numbers from 1 to that number.
+            //Requirements:
+            //• Use a do -while loop combined with try-catch to repeatedly ask for input: catch the error and print a message if the
+            //input is not a valid whole number, and keep looping in that case as well.
+            //• Once a valid number is captured, use an if statement to also reject zero or negative numbers and loop again asking
+            //for input.
+            //• Only after a valid positive number is entered, use a separate for loop(not nested inside the input loop) to calculate
+            //and print the sum from 1 to that number.
+
+
+            int Pnum2 = 0;
+            bool validInput = false;
+            do
+            {
+                try
+                {
+                    Console.WriteLine("Enter A positive whole number: ");
+                    Pnum2 = int.Parse(Console.ReadLine());
+
+                    if (Pnum2 <= 0)
+                    {
+                        Console.WriteLine("Enter a positive number");
+                    }
+                    else { validInput = true; }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Enter a valid number");
+
+                }
+            }
+            while(!validInput);
+            int sumnum = 0;
+            for (int i = 0; i<= Pnum2 ; i++)
+            {
+                sumnum += i;
+            }
+            Console.WriteLine("The sum of all whole numbers from 1 to " + Pnum2 + " is " + sumnum);
+
+
         }
     }
 }
+
 
 
 
