@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.FileIO;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
@@ -175,7 +177,7 @@ namespace Task2_Solutions
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("This is our menu:");
+                Console.WriteLine("\nThis is our menu:");
                 Console.WriteLine("1. Say hello");
                 Console.WriteLine("2. Show current time");
                 Console.WriteLine("3. Exit");
@@ -254,7 +256,7 @@ namespace Task2_Solutions
             {
                 try
                 {
-                    Console.WriteLine("Enter A positive whole number: ");
+                    Console.WriteLine("\nEnter A positive whole number: ");
                     Pnum2 = int.Parse(Console.ReadLine());
 
                     if (Pnum2 <= 0)
@@ -277,9 +279,113 @@ namespace Task2_Solutions
             }
             Console.WriteLine("The sum of all whole numbers from 1 to " + Pnum2 + " is " + sumnum);
 
+            ///////////////////////////////////////////////////////////////////
 
+            //            Task 10 - Simple ATM Simulation
+            //Build a simplified ATM simulation.The correct PIN is fixed in the code(for example, 1234), and the starting balance
+            //is fixed at 100.000 OMR.
+            //Requirements:
+
+            //• Give the user up to 3 attempts to enter the correct PIN using a loop; wrap the PIN input in try-catch so a
+            //non - numeric entry counts as a wrong attempt instead of crashing the program.If all 3 attempts fail, print "Card
+            //Blocked" and stop the program.
+
+            //• Once the PIN is correct, show a repeating menu(while loop) with four options: 1) Deposit, 2) Withdraw, 3) Check
+            //Balance, 4) Exit, handled with a switch-case statement.
+
+            //• For Deposit and Withdraw, read the amount with try-catch to handle invalid(non - numeric) input, and use an if
+            //statement to reject negative amounts and, for withdrawals, amounts greater than the current balance.
+            //• Update and print the balance after every successful deposit or withdrawal, and exit the loop cleanly when option 4
+            //is chosen.
+
+            int pass1 = 1234;
+            int balance = 100000;
+            int attempts = 0;
+            bool correct = false;
+            
+            while (attempts < 3)
+            {
+                try
+                {
+                    Console.Write("\nEnter your PIN: ");
+                    int UaserPass = int.Parse(Console.ReadLine());
+
+                    if (UaserPass == pass1)
+                    {
+                        Console.WriteLine("Welcome to the ATM");
+                        correct = true;
+
+                        // ATM Menu
+
+                        bool exitATM = false;
+                        while (!exitATM)
+                        {
+                            Console.WriteLine("\nATM Menu:");
+                            Console.WriteLine("1. Deposit");
+                            Console.WriteLine("2. Withdraw");
+                            Console.WriteLine("3. Check Balance");
+                            Console.WriteLine("4. Exit");
+                            int choice = int.Parse(Console.ReadLine());
+
+                            switch (choice)
+                            {
+                                case 1:
+                                    Console.Write("Enter the anount you want to add:");
+                                    int deposit = int.Parse(Console.ReadLine());
+
+                                    balance += deposit;
+
+                                    Console.WriteLine("Your new balance is: " + balance);
+                                    break;
+
+                                case 2:
+                                    Console.WriteLine("Enter the amount you want to withdraw:");
+                                    int withdraw = int.Parse(Console.ReadLine());
+                                    if (withdraw <= balance)
+                                    {
+                                        balance -= withdraw;
+                                        Console.WriteLine("Your new balance is: " + balance);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Unsufficient funds. Your current balance is: " + balance);
+                                    }
+                                    break;
+
+                                case 3:
+                                    Console.WriteLine("Your current balance is: " + balance);
+                                    break;
+
+                                case 4:
+                                    Console.WriteLine("Returning to PIN Screen ... ");
+                                    exitATM = true; // exit atm loop only
+                                    break;
+                                default:
+                                    Console.WriteLine("Invalid option");
+                                    break;
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid PIN, try again");
+                        attempts++;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Enter a valid number");
+                        attempts++;
+                       
+                }
+            }
+            if (!correct)
+            {
+                Console.WriteLine("Your card is blocked");
+            }
         }
-    }
+}
 }
 
 
