@@ -209,10 +209,37 @@ namespace Task2_Solutions
                     Console.WriteLine("Enter a valid number");
                 }
             }
+            ///////////////////////////////////////////////////////////////////
+
+            //Task 8 - Sum of Even Numbers Only
+            //Ask the user to enter a positive whole number N, then use a for loop to calculate the sum of only the even numbers
+            //from 1 to N.
+            //Requirements:
+            //• Use the modulus operator (%) with an if statement inside the loop to check whether each number is even before
+            //adding it to the total.
+            //• Print the final sum after the loop finishes
+
+            Console.WriteLine("\nEnter a positive whole number:");
+            int Pnum = int.Parse(Console.ReadLine());
+            int sumEven = 0;
+            for ( int i = 0 ; i<=Pnum ; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    sumEven += i;
+                }
+            }
+            Console.WriteLine("The sum of all even numbers from 1 to " + Pnum + " is " + sumEven);
+
         }
     }
 }
 
-///////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
