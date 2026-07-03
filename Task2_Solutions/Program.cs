@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.VisualBasic.FileIO;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Diagnostics.Metrics;
 using System.Drawing;
@@ -7,6 +8,7 @@ using System.Net.Sockets;
 using System.Numerics;
 using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
+using System.Timers;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task2_Solutions
@@ -43,23 +45,24 @@ namespace Task2_Solutions
             Console.Write("\nEnter a positive whole number: ");
             int N = int.Parse(Console.ReadLine());
             int sum = 0;
-            for (int i = 1 ; i <= N; i++) {
+            for (int i = 1; i <= N; i++)
+            {
                 sum += i;
             }
-            Console.WriteLine($"The sum of all whole numbers from 1 to " + N + " is "+ sum );
+            Console.WriteLine($"The sum of all whole numbers from 1 to " + N + " is " + sum);
 
             ///////////////////////////////////////////////////////////////////
 
-//            Task 3 - Multiplication Table
-//Ask the user to enter a number, then print its multiplication table from 1 to 10 using a single for loop.
-//Requirements:
-//• Each line should show the full expression, e.g. "5 x 3 = 15".
-//• Use only one loop - no nested loops
+            //            Task 3 - Multiplication Table
+            //Ask the user to enter a number, then print its multiplication table from 1 to 10 using a single for loop.
+            //Requirements:
+            //• Each line should show the full expression, e.g. "5 x 3 = 15".
+            //• Use only one loop - no nested loops
 
 
             Console.Write("\nEnter a number to print its multiplication table: ");
             int num = int.Parse(Console.ReadLine());
-            for ( int i = 0; i <=10; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 int mul = i * num;
                 Console.WriteLine(num + " x " + i + " = " + mul);
@@ -67,12 +70,12 @@ namespace Task2_Solutions
 
             ///////////////////////////////////////////////////////////////////
 
-//            Task 4 - Password Retry
-//The correct password is fixed in the code as "Spark2026".Use a while loop to keep asking the user to enter the
-//password until they type it correctly, then print "Access Granted".
-//Requirements:
-//• Use a while loop, since the number of attempts is unknown in advance.
-//• Print "Incorrect password, try again" after each wrong attempt.
+            //            Task 4 - Password Retry
+            //The correct password is fixed in the code as "Spark2026".Use a while loop to keep asking the user to enter the
+            //password until they type it correctly, then print "Access Granted".
+            //Requirements:
+            //• Use a while loop, since the number of attempts is unknown in advance.
+            //• Print "Incorrect password, try again" after each wrong attempt.
 
             Console.Write("\nEnter the password: ");
             string pass = Console.ReadLine();
@@ -121,7 +124,7 @@ namespace Task2_Solutions
 
                 }
             }
-            while ( guss != secretNumber);
+            while (guss != secretNumber);
             Console.WriteLine("you guessed the secret number in " + gussCount + " attempts.");
 
             ///////////////////////////////////////////////////////////////////
@@ -145,7 +148,7 @@ namespace Task2_Solutions
                 int secondNumber = int.Parse(Console.ReadLine());
                 int result = firstNumber / secondNumber;
 
-                Console.WriteLine("Result = " + result );
+                Console.WriteLine("Result = " + result);
             }
             catch (DivideByZeroException)
             {
@@ -156,11 +159,60 @@ namespace Task2_Solutions
                 Console.WriteLine("Error: Please enter valid numbers only.");
             }
 
+            ///////////////////////////////////////////////////////////////////
+
+            //            Task 7 - Repeating Menu with Exit Option
+            //Build a menu - driven program using a while loop.The menu has three options: 1) Say Hello, 2) Show Current
+            //Time - of - day Greeting(just print a fixed message), 3) Exit.Keep showing the menu and asking for a choice until the
+            //user selects Exit.
+            //Requirements:
+            //• Use a while loop that keeps running until the exit option is chosen.
+            //• Use a switch-case statement inside the loop to handle the three options.
+            //• Use try-catch around reading the menu choice, in case the user enters a non - numeric value; print an error
+            //message and show the menu again instead of crashing.
+            bool exit = false;
+            while (!exit)
+            {
+                Console.WriteLine("This is our menu:");
+                Console.WriteLine("1. Say hello");
+                Console.WriteLine("2. Show current time");
+                Console.WriteLine("3. Exit");
+                Console.Write("Choose your option number: ");
 
 
+                try
+                {
 
+                    int choice = int.Parse(Console.ReadLine());
 
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Hello");
+                            break;
+                        case 2:
+                            Console.WriteLine("It is 10:00 AM, Good Morning");
+                            break;
 
+                        case 3:
+                            Console.WriteLine("Good bye");
+                            exit = true;
+                            break;
+
+                        default:
+                            Console.WriteLine("invalid option, please chose 1,2 or 3");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Enter a valid number");
+                }
+            }
         }
     }
 }
+
+///////////////////////////////////////////////////////////////////
+
+
