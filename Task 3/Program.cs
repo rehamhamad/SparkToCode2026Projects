@@ -28,6 +28,27 @@ namespace Task_3
             int difference = Math.Abs(firstNumber - secondNumber);
 
             Console.WriteLine("Positive Difference: " + difference);
+
+            ////////////////////////////////////////////////////////////
+
+//            Task 2 - Power & Root Explorer
+//Ask the user to enter a number, then print its square(power of 2) and its square root.
+//Requirements:
+//• Use Math.Pow to calculate the square.
+//• Use Math.Sqrt to calculate the square root.
+//• Print both results clearly labeled.
+
+            Console.Write("Enter a number: ");
+            double number = double.Parse(Console.ReadLine());
+
+            double square = Math.Pow(number, 2);
+            double squareRoot = Math.Sqrt(number);
+            Console.WriteLine("Square: " + square);
+            Console.WriteLine("Square Root: " + squareRoot);
+
+
+
+
         }
     }
 }
