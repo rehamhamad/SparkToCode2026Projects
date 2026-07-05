@@ -109,6 +109,56 @@ namespace Task_3
                 Console.WriteLine("Result: Fail");
 
             }
+
+            ////////////////////////////////////////////////////////////
+
+            //            Task 6 - Password Strength Checker
+            //Ask the user to enter a password, then check whether it meets two basic conditions: it must be at least 8 characters
+            //long, and it must not contain the word "password" in it.
+            //Requirements:
+            //• Use.Length to check the minimum length requirement.
+            //• Use.Contains(with a case -insensitive comparison, e.g.after.ToLower()) to check for the forbidden word.
+            //• Combine both checks using logical operators and print "Strong" or "Weak" with the reason.
+
+            Console.Write("Enter a password: ");
+            string password = Console.ReadLine();
+
+            bool isLongEnough = password.Length >= 8;
+            bool containsForbiddenWord = password.ToLower().Contains("password");
+
+            if (isLongEnough && !containsForbiddenWord)
+            {
+                Console.WriteLine("Strong: Meets length requirement and does not contain the word 'password'.");
+            }
+            else
+            {
+                Console.WriteLine("Weak:");
+
+                if (!isLongEnough)
+                {
+                    Console.WriteLine("- Password must be at least 8 characters long.");
+                }
+
+                if (containsForbiddenWord)
+                {
+                    Console.WriteLine("- Password must not contain the word 'password'.");
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
