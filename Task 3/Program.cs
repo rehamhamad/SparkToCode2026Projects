@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task_3
 {
@@ -67,6 +68,29 @@ namespace Task_3
             Console.WriteLine("Uppercase: " + upperCaseName);
             Console.WriteLine("Lowercase: " + lowerCaseName);
             Console.WriteLine("Number of Characters: " + characterCount);
+
+            ////////////////////////////////////////////////////////////
+            
+//            Task 4 - Subscription End Date
+//Ask the user to enter the number of days of a free trial, then calculate and print the date on which the trial ends,
+//starting from today.
+//Requirements:
+//• Use DateTime.Today as the starting point.
+//• Use.AddDays to calculate the end date.
+//• Print the end date using .ToString("yyyy-MM-dd").
+
+            Console.Write("Enter the number of free trial days: ");
+            int trialDays = int.Parse(Console.ReadLine());
+            DateTime today = DateTime.Today;
+            DateTime endDate = today.AddDays(trialDays);
+            Console.WriteLine("Trial End Date: " + endDate.ToString("yyyy-MM-dd"));
+
+            ////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
 
