@@ -1,7 +1,10 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System.ComponentModel;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
+using System.Runtime.Serialization;
+using System.Xml.Linq;
 
 namespace Task_3
 {
@@ -45,6 +48,25 @@ namespace Task_3
             double squareRoot = Math.Sqrt(number);
             Console.WriteLine("Square: " + square);
             Console.WriteLine("Square Root: " + squareRoot);
+
+            ////////////////////////////////////////////////////////////
+
+            //            Task 3 - Name Formatter
+            //Ask the user to enter their full name, then print it in uppercase, in lowercase, and print how many characters it
+            //contains.
+            //Requirements:
+            //• Use.ToUpper() and.ToLower() on the entered name.
+            //• Use.Length to count the characters.
+            //• Print all three results with clear labels.
+
+            Console.Write("Enter your full name: ");
+            string fullName = Console.ReadLine();
+            string upperCaseName = fullName.ToUpper();
+            string lowerCaseName = fullName.ToLower();
+            int characterCount = fullName.Length;
+            Console.WriteLine("Uppercase: " + upperCaseName);
+            Console.WriteLine("Lowercase: " + lowerCaseName);
+            Console.WriteLine("Number of Characters: " + characterCount);
 
 
 
