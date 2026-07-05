@@ -2,9 +2,11 @@
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task_3
@@ -175,11 +177,47 @@ namespace Task_3
 
             ////////////////////////////////////////////////////////////
 
+//            Task 8 - Membership Expiry Checker
+//Ask the user to enter their membership start date as text (e.g. "2026-01-10") and the number of valid membership
+//days, then determine whether the membership is still active today.
+//Requirements:
+//• Use DateTime.Parse(or DateTime.TryParse inside try-catch) to convert the entered text into a DateTime value.
+//• Use.AddDays on the start date to calculate the expiry date.
+//• Compare the expiry date with DateTime.Today using an if-else statement and print whether the membership is
+//"Active" or "Expired", along with the expiry date.
 
 
+            Console.Write("Enter your membership start date (e.g. 2026-01-10): ");
+            string dateInput = Console.ReadLine();
+
+            Console.Write("Enter the number of valid membership days: ");
+            string daysInput = Console.ReadLine();
+
+            DateTime startDate;
+            bool isValidDate = DateTime.TryParse(dateInput, out startDate);
+
+            int validDays;
+            bool isValidDays = int.TryParse(daysInput, out validDays);
+
+            if (isValidDate && isValidDays)
+            {
+                DateTime expiryDate = startDate.AddDays(validDays);
+
+                if (expiryDate >= DateTime.Today)
+                {
+                    Console.WriteLine("Active - Your membership expires on " + expiryDate.ToShortDateString());
+                }
+                else
+                {
+                    Console.WriteLine("Expired - Your membership expired on " + expiryDate.ToShortDateString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid date and a whole number of days.");
 
 
-
+            }
 
         }
     }
