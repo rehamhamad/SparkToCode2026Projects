@@ -145,13 +145,35 @@ namespace Task_3
                 }
             }
 
+            ////////////////////////////////////////////////////////////
 
+//            Task 7 - Clean Name Comparator
+//Ask the user to enter the same name twice(once in each input), possibly typed with extra spaces or different casing,
+//and check whether the two entries actually refer to the same name.
+//Requirements:
+//• Use.Trim() on both inputs to remove extra leading / trailing spaces.
+//• Use.ToUpper()(or.ToLower()) on both inputs to ignore case differences.
+//• Print "Match" or "No Match" based on the comparison.
 
+            Console.Write("Enter the first name: ");
+            string name1 = Console.ReadLine();
 
+            Console.Write("Enter the second name: ");
+            string name2 = Console.ReadLine();
 
+            string cleanName1 = name1.Trim().ToUpper();
+            string cleanName2 = name2.Trim().ToUpper();
 
+            if (cleanName1 == cleanName2)
+            {
+                Console.WriteLine("Match");
+            }
+            else
+            {
+                Console.WriteLine("No Match");
+            }
 
-
+            ////////////////////////////////////////////////////////////
 
 
 
