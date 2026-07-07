@@ -24,7 +24,13 @@ namespace Task4_Solution
             return (celsius * 9 / 5) + 32;
         }
 
-  
+        //Task 4 - Fixed Menu Display Function
+        static void DisplayMenu()
+        {
+            Console.WriteLine("1) Start");
+            Console.WriteLine("2) Help");
+            Console.WriteLine("3) Exit");
+        }
 
         //Main 
         static void Main(string[] args)
@@ -54,8 +60,10 @@ namespace Task4_Solution
 
             Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
 
+            //Task 4 - Fixed Menu Display Function
 
- 
+            DisplayMenu();
+
 
 
         }
