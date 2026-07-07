@@ -32,6 +32,21 @@ namespace Task4_Solution
             Console.WriteLine("3) Exit");
         }
 
+
+        //Task 5 - Even or Odd Function
+        static bool IsEven(int number)
+        {
+            return number % 2 == 0;
+        }
+
+
+
+
+
+
+
+
+
         //Main 
         static void Main(string[] args)
         {
@@ -65,6 +80,21 @@ namespace Task4_Solution
             DisplayMenu();
 
 
+            //Task 5 - Even or Odd Function
+
+            Console.Write("Enter a number: ");
+            int number1 = int.Parse(Console.ReadLine());
+
+            bool Result = IsEven(number1);
+
+            if (Result)
+            {
+                Console.WriteLine("Even");
+            }
+            else
+            {
+                Console.WriteLine("Odd");
+            }
 
         }
     }
