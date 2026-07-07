@@ -12,13 +12,21 @@ namespace Task4_Solution
             Console.WriteLine("Welcome, " + name + "! We are glad to have you here.");
         }
 
-
+        //Task 2 - Square Number Function
         static int Square(int number)
         {
             return number * number;
         }
 
-        //Task 2 - Square Number Function
+        //Task 3 - Celsius to Fahrenheit Function
+        static double CelsiusToFahrenheit(double celsius)
+        {
+            return (celsius * 9 / 5) + 32;
+        }
+
+  
+
+        //Main 
         static void Main(string[] args)
         {
 
@@ -37,13 +45,19 @@ namespace Task4_Solution
 
             Console.WriteLine("The square is: " + result);
 
+            //Task 3 - Celsius to Fahrenheit Function
+
+            Console.Write("Enter temperature in Celsius: ");
+            double celsius = double.Parse(Console.ReadLine());
+
+            double fahrenheit = CelsiusToFahrenheit(celsius);
+
+            Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
+
+
+ 
 
 
         }
-
-
-
-        
-
     }
 }
