@@ -7,32 +7,43 @@ namespace Task4_Solution
     {
 
         //Task 1 - Personalized Welcome Function
-        //Write a function called PrintWelcome that takes the user's name (string) as a parameter and does not return a
-        //value.Inside the function, print a personalized welcome message.Ask the user for their name in Main, then call the
-        //function.
-        //Requirements:
-        //• The function must have a void return type and exactly one string parameter.
-        //• All console output for the welcome message must happen inside the function, not in Main.
-
         static void PrintWelcome(string name)
         {
             Console.WriteLine("Welcome, " + name + "! We are glad to have you here.");
         }
 
+
+        static int Square(int number)
+        {
+            return number * number;
+        }
+
+        //Task 2 - Square Number Function
         static void Main(string[] args)
         {
+
+
+            //Task 1 - Personalized Welcome Function
             Console.Write("Enter your name: ");
             string name = Console.ReadLine();
 
             PrintWelcome(name);
+
+            //Task 2 - Square Number Function
+            Console.Write("Enter a number: ");
+            int number = int.Parse(Console.ReadLine());
+
+            int result = Square(number);
+
+            Console.WriteLine("The square is: " + result);
+
+
+
         }
 
 
 
-        ////////////////////////////////////////////////////////////////////
         
-
-
 
     }
 }
