@@ -33,13 +33,11 @@ namespace Task4_Solution
             Console.WriteLine("3) Exit");
         }
 
-
         //Task 5 - Even or Odd Function
         static bool IsEven(int number)
         {
             return number % 2 == 0;
         }
-
 
         //Task 6 - Rectangle Area & Perimeter Functions
 
@@ -51,8 +49,6 @@ namespace Task4_Solution
         {
             return 2 * (length + width);
         }
-
-
 
         //Task 7 - Grade Letter Function
 
@@ -82,8 +78,6 @@ namespace Task4_Solution
         }
 
         //Task 8 - Countdown Function
-
-
         static void Countdown(int number2)
         {
             for (int i = number2; i >= 1; i--)
@@ -91,32 +85,6 @@ namespace Task4_Solution
                 Console.WriteLine(i);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //Main 
         static void Main(string[] args)
@@ -194,10 +162,6 @@ namespace Task4_Solution
                 int number2 = int.Parse(Console.ReadLine());
 
                 Countdown(number2);
-
-
-
-
 
 
         }
