@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Reflection.Metadata;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Task4_Solution
@@ -40,7 +41,16 @@ namespace Task4_Solution
         }
 
 
+        //Task 6 - Rectangle Area & Perimeter Functions
 
+        static double CalculateArea(double length, double width)
+        {
+            return length * width;
+        }
+        static double CalculatePerimeter(double length, double width)
+        {
+            return 2 * (length + width);
+        }
 
 
 
@@ -95,6 +105,19 @@ namespace Task4_Solution
             {
                 Console.WriteLine("Odd");
             }
+
+            //Task 6 - Rectangle Area & Perimeter Functions
+            Console.Write("Enter length: ");
+            double length = double.Parse(Console.ReadLine());
+
+            Console.Write("Enter width: ");
+            double width = double.Parse(Console.ReadLine());
+
+            double area = CalculateArea(length, width);
+            double perimeter = CalculatePerimeter(length, width);
+
+            Console.WriteLine("Area: " + area);
+            Console.WriteLine("Perimeter: " + perimeter);
 
         }
     }
