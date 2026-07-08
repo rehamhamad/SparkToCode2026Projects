@@ -176,6 +176,37 @@
 
 
 
+
+            //Task 8 - Undo Last Action
+
+            Stack<string> actions = new Stack<string>();
+
+            Console.WriteLine("Enter actions (type 'stop' to finish):");
+
+            while (true)
+            {
+                Console.Write("Action: ");
+                string action = Console.ReadLine();
+
+                if (action == "stop")
+                {
+                    break;
+                }
+
+                actions.Push(action);
+            }
+
+            Console.WriteLine("\nUndo actions:");
+
+            Console.WriteLine("Undone: " + actions.Pop());
+            Console.WriteLine("Undone: " + actions.Pop());
+
+            Console.WriteLine("\nRemaining actions:");
+
+            foreach (string action in actions)
+            {
+                Console.WriteLine("- " + action);
+            }
         }
     }
 }
