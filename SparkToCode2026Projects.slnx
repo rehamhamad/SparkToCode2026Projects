@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="../Task5_Solution/Task5_Solution.csproj" Id="9b1295c9-3ae1-4d6e-8486-324b0024b05f" />
   <Project Path="Task 3/Task 3.csproj" Id="0f7a78ed-03cc-43b2-8b3c-aaa93d36466e" />
   <Project Path="Task1_Solutions/Task1_Solutions.csproj" />
   <Project Path="Task2_Solutions/Task2_Solutions.csproj" Id="295fb354-738e-4a43-ba70-faba8f84e04c" />
   <Project Path="Task4_Solution/Task4_Solution.csproj" Id="61fcc664-8f15-4706-9ecc-a25f8c281d0e" />
+  <Project Path="Task5/Task5.csproj" Id="d36072c3-d26d-4a15-963f-b0b87ebbd9bd" />
 </Solution>
