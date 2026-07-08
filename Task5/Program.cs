@@ -58,6 +58,35 @@
 
             Console.WriteLine("\nAfter pressing the Back button:");
             Console.WriteLine("You are now on: " + history.Peek());
+
+
+
+
+
+            //Task 4 - Customer Service Queue
+
+            Queue<string> customers = new Queue<string>();
+
+            Console.WriteLine("Enter 3 customer names:");
+
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.Write("Customer " + i + ": ");
+                string name = Console.ReadLine();
+                customers.Enqueue(name);
+            }
+
+            string servedCustomer = customers.Dequeue();
+
+            Console.WriteLine("\nServing customer...");
+            Console.WriteLine("Served: " + servedCustomer);
+
+
+
+
+
+
+
         }
     }
 }
