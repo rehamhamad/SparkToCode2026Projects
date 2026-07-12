@@ -43,6 +43,9 @@ namespace BankingSystemApp
                     case 1:
                         AddAccount();   
                         break;
+                    case 2:
+                        DepositMoney();
+                        break;
 
                    //add other cases 
                 }
@@ -81,11 +84,46 @@ namespace BankingSystemApp
             Console.WriteLine("\nAccount created successfully!");
             Console.WriteLine($"Customer Name : {customerName}");
             Console.WriteLine($"Account Number: {accountNumber}");
-            Console.WriteLine($"Opening Balance: {balance}");
+            Console.WriteLine($"Opening Balance: {balance:c}");
 
         }
 
+        static void DepositMoney()
+        {
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
 
+            int index = accountNumbers.IndexOf(accountNumber);
+            if (index == -1)
+            {
+                Console.WriteLine($"Error: Account number '{accountNumber}' was not found.");
+                return;
+            }
+
+            Console.Write("Enter deposit amount: ");
+            double amount;
+            try
+            {
+                amount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: Invalid amount entered.");
+                return;
+            }
+
+            if (amount <= 0)
+            {
+                Console.WriteLine("Error: Deposit amount must be positive.");
+                return;
+            }
+
+            balances[index] += amount;
+
+            Console.WriteLine($"Deposit successful. New balance for {customerNames[index]} ({accountNumber}): {balances[index]:C}");
+        }
     }
+
+
 
 }
