@@ -40,12 +40,9 @@ namespace BankingSystemApp
                 }
                 switch (choice)
                 {
-                    case 1:
-                        AddAccount();   
-                        break;
-                    case 2:
-                        DepositMoney();
-                        break;
+                    case 1: AddAccount(); break;
+                    case 2: DepositMoney(); break;
+                    case 3: WithdrawMoney(); break;
 
                    //add other cases 
                 }
@@ -53,6 +50,8 @@ namespace BankingSystemApp
         }
 
         //Outside Main
+
+        //Service 1 - Add New Account
         static void AddAccount()
         {
             Console.Write("Enter customer name: ");
@@ -88,18 +87,17 @@ namespace BankingSystemApp
 
         }
 
+        //Service 2 - Deposit Money
         static void DepositMoney()
         {
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
-
             int index = accountNumbers.IndexOf(accountNumber);
             if (index == -1)
             {
                 Console.WriteLine($"Error: Account number '{accountNumber}' was not found.");
                 return;
             }
-
             Console.Write("Enter deposit amount: ");
             double amount;
             try
@@ -111,17 +109,82 @@ namespace BankingSystemApp
                 Console.WriteLine("Error: Invalid amount entered.");
                 return;
             }
-
             if (amount <= 0)
             {
                 Console.WriteLine("Error: Deposit amount must be positive.");
                 return;
             }
-
             balances[index] += amount;
 
             Console.WriteLine($"Deposit successful. New balance for {customerNames[index]} ({accountNumber}): {balances[index]:C}");
         }
+
+        //Service 3 - Withdraw Money
+        static void WithdrawMoney()
+        {
+            Console.Write("Enter account number: ");
+            string accNum = Console.ReadLine();
+
+            int index = accountNumbers.IndexOf(accNum);
+            if (index == -1)
+            {
+                Console.WriteLine($"Error: Account number '{accNum}' was not found.");
+                return;
+            }
+            Console.Write("Enter withdrawal amount: ");
+            double amount;
+            try
+            {
+                amount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: Invalid amount entered.");
+                return;
+            }
+            if (amount <= 0)
+            {
+                Console.WriteLine("Error: Withdrawal amount must be positive.");
+                return;
+            }
+            if (amount > balances[index])
+            {
+                Console.WriteLine($"Error: Insufficient funds. Current balance is {balances[index]:C}.");
+                return;
+            }
+
+
+            balances[index] -= amount;
+            Console.WriteLine($"Withdrawal successful. New balance for {customerNames[index]} ({accNum}): {balances[index]:C}");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
