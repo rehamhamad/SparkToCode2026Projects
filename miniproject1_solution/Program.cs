@@ -46,8 +46,13 @@ namespace BankingSystemApp
                     case 4: ShowBalance(); break;
                     case 5: TransferAmount(); break;
                     case 6: ListAllAccounts(); break;
+                    case 7: FindRichestCustomer(); break;
+                    case 8: exitApp = true; break;
+                    default:
+                        Console.WriteLine("Invalid option, please choose between 1 and 8.");
+                        break;
 
-                   //add other cases 
+                        //add other cases 
                 }
             }
         }
@@ -261,6 +266,27 @@ namespace BankingSystemApp
 
 
 
+        static void FindRichestCustomer()
+        {
+            if (customerNames.Count == 0)
+            {
+                Console.WriteLine("There are no accounts registered yet.");
+                return;
+            }
+            
+            int richestIndex = 0;
+            for (int i = 1; i < balances.Count; i++)
+            {
+                if (balances[i] > balances[richestIndex])
+                {
+                    richestIndex = i;
+                }
+            }
+
+            Console.WriteLine("\n----- Richest Customer -----");
+            Console.WriteLine($"Customer Name : {customerNames[richestIndex]}");
+            Console.WriteLine($"Account Number: {accountNumbers[richestIndex]}");
+            Console.WriteLine($"Balance       : {balances[richestIndex]:C}");
 
 
 
@@ -269,11 +295,7 @@ namespace BankingSystemApp
 
 
 
-
-
-
-
-
+        }
 
         }
 
