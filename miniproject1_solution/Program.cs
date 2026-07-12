@@ -45,6 +45,7 @@ namespace BankingSystemApp
                     case 3: WithdrawMoney(); break;
                     case 4: ShowBalance(); break;
                     case 5: TransferAmount(); break;
+                    case 6: ListAllAccounts(); break;
 
                    //add other cases 
                 }
@@ -184,7 +185,7 @@ namespace BankingSystemApp
             Console.WriteLine($"Balance       : {balances[index]:C}");
         }
 
-
+        //Task 5 - Transfer Amount 
         static void TransferAmount()
         {
             Console.Write("Enter sender's account number: ");
@@ -240,6 +241,22 @@ namespace BankingSystemApp
         }
 
 
+        //Task 6 - List all account
+
+        static void ListAllAccounts()
+        {
+            if (customerNames.Count == 0)
+            {
+                Console.WriteLine("There are no accounts registered yet.");
+                return;
+            }
+
+            Console.WriteLine("\n----- All Accounts -----");
+            for (int i = 0; i < customerNames.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {customerNames[i]} | AccNumber: {accountNumbers[i]} | Balance: {balances[i]:C}");
+            }
+        }
 
 
 
@@ -258,8 +275,7 @@ namespace BankingSystemApp
 
 
 
-
-    }
+        }
 
 
 
