@@ -43,6 +43,7 @@ namespace BankingSystemApp
                     case 1: AddAccount(); break;
                     case 2: DepositMoney(); break;
                     case 3: WithdrawMoney(); break;
+                    case 4: ShowBalance(); break;
 
                    //add other cases 
                 }
@@ -160,7 +161,27 @@ namespace BankingSystemApp
 
 
 
+        //Task 4 - Show Balance 
+        static void ShowBalance()
+        {
+    
+            Console.Write("Enter account number: ");
+            string accNum = Console.ReadLine();
 
+            int index = accountNumbers.IndexOf(accNum);
+            if (index == -1)
+            {
+                
+                Console.WriteLine($"Error: Account number '{accNum}' was not found.");
+                return;
+            }
+
+        
+            Console.WriteLine("\n----- Account Details -----");
+            Console.WriteLine($"Customer Name : {customerNames[index]}");
+            Console.WriteLine($"Account Number: {accountNumbers[index]}");
+            Console.WriteLine($"Balance       : {balances[index]:C}");
+        }
 
 
 
