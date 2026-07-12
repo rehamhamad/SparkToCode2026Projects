@@ -44,6 +44,7 @@ namespace BankingSystemApp
                     case 2: DepositMoney(); break;
                     case 3: WithdrawMoney(); break;
                     case 4: ShowBalance(); break;
+                    case 5: TransferAmount(); break;
 
                    //add other cases 
                 }
@@ -184,7 +185,59 @@ namespace BankingSystemApp
         }
 
 
+        static void TransferAmount()
+        {
+            Console.Write("Enter sender's account number: ");
+            string senderAcc = Console.ReadLine();
 
+            Console.Write("Enter receiver's account number: ");
+            string receiverAcc = Console.ReadLine();
+
+            int senderIndex = accountNumbers.IndexOf(senderAcc);
+            if (senderIndex == -1)
+            {
+                Console.WriteLine($"Error: Sender account '{senderAcc}' was not found.");
+                return;
+            }
+
+            int receiverIndex = accountNumbers.IndexOf(receiverAcc);
+            if (receiverIndex == -1)
+            {
+                Console.WriteLine($"Error: Receiver account '{receiverAcc}' was not found.");
+                return;
+            }
+
+            Console.Write("Enter transfer amount: ");
+            double amount;
+            try
+            {
+                amount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: Invalid amount entered.");
+                return;
+            }
+
+            if (amount <= 0)
+            {
+                Console.WriteLine("Error: Transfer amount must be positive.");
+                return;
+            }
+
+            if (amount > balances[senderIndex])
+            {
+                Console.WriteLine($"Error: Insufficient funds in sender's account. Current balance is {balances[senderIndex]:C}.");
+                return;
+            }
+
+            balances[senderIndex] -= amount;
+            balances[receiverIndex] += amount;
+
+            Console.WriteLine("\nTransfer successful!");
+            Console.WriteLine($"{customerNames[senderIndex]} ({senderAcc}) new balance : {balances[senderIndex]:C}");
+            Console.WriteLine($"{customerNames[receiverIndex]} ({receiverAcc}) new balance : {balances[receiverIndex]:C}");
+        }
 
 
 
