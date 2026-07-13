@@ -151,7 +151,7 @@
                     case "1": Case1_ViewAccount(); break;
                     case "2": Case2_UpdateAddress();  break;
                     case "3": Case3_Deposit();  break;
-                    case "4":  break;
+                    case "4": Case4_Withdraw();  break;
                     case "5":  break;
                     case "6":  break;
                     case "7":  break;
@@ -209,6 +209,16 @@
                     double amount = double.Parse(Console.ReadLine());
                     acc.Deposit(amount);
                     Console.WriteLine($"{acc.HolderName}'s new balance: {acc.Balance}");
+                }
+
+                //Case 4 - Make a Withdrawal
+                static void Case4_Withdraw()
+                {
+                    BankAccount acc = PickAccount();
+                    Console.Write("Enter withdrawal amount: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    acc.Withdraw(amount);
+                    Console.WriteLine($"Updated balance: {acc.Balance}");
                 }
             }
         } 
