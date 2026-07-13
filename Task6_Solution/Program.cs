@@ -150,7 +150,7 @@
                 {
                     case "1": Case1_ViewAccount(); break;
                     case "2": Case2_UpdateAddress();  break;
-                    case "3":  break;
+                    case "3": Case3_Deposit();  break;
                     case "4":  break;
                     case "5":  break;
                     case "6":  break;
@@ -200,6 +200,15 @@
                     Console.Write("Enter new address: ");
                     s.Address = Console.ReadLine();
                     Console.WriteLine($"Address updated to: {s.Address}");
+                }
+                //Case 3 - Make a Deposit
+                static void Case3_Deposit()
+                {
+                    BankAccount acc = PickAccount();
+                    Console.Write("Enter deposit amount: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    acc.Deposit(amount);
+                    Console.WriteLine($"{acc.HolderName}'s new balance: {acc.Balance}");
                 }
             }
         } 
