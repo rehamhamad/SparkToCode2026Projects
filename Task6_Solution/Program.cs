@@ -165,7 +165,7 @@
                     case "8": Case8_Restock(); break;
                     case "9": Case9_Transfer(); break;
                     case "10": Case10_UpdateGrade(); break;
-                    case "11":
+                    case "11": Case11_ReportCard(); break;
                     case "12":
                     case "13":
                     case "14":
@@ -330,6 +330,19 @@
                     s.Grade = newGrade;
                     Console.WriteLine("Grade updated successfully.");
                 }
+
+                //Case 11 - Student Report Card
+                static void Case11_ReportCard()
+                {
+                    Student s = PickStudent();
+                    string result = s.Grade >= 60 ? "Pass" : "Fail";
+                    Console.WriteLine("---- Report Card ----");
+                    Console.WriteLine($"Name: {s.Name}");
+                    Console.WriteLine($"Address: {s.Address}");
+                    Console.WriteLine($"Grade: {s.Grade}");
+                    Console.WriteLine($"Result: {result}");
+                }
+
 
 
             }
