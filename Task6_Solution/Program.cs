@@ -153,7 +153,7 @@
                     case "3": Case3_Deposit();  break;
                     case "4": Case4_Withdraw();  break;
                     case "5": Case5_ViewProduct(); break;
-                    case "6":  break;
+                    case "6": Case6_RegisterStudent();  break;
                     case "7":  break;
                     case "8":  break;
                     case "9": running = false; Console.WriteLine("Goodbye!"); break;
@@ -228,6 +228,23 @@
                     double value = p.GetInventoryValue();
                     Console.WriteLine($"Total inventory value: {value}");
                 }
+
+                //Case 6 - Register a Student
+                static void Case6_RegisterStudent()
+                {
+                    Student s = PickStudent();
+                    Console.Write("Enter email: ");
+                    string email = Console.ReadLine();
+                    s.Register(email);
+                    Console.WriteLine($"{s.Name} has been registered successfully.");
+                }
+
+
+
+
+
+
+
             }
         } 
     }
