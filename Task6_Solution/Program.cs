@@ -155,7 +155,7 @@
                     case "5": Case5_ViewProduct(); break;
                     case "6": Case6_RegisterStudent();  break;
                     case "7": Case7_CompareBalances();  break;
-                    case "8":  break;
+                    case "8": Case8_Restock(); break;
                     case "9": running = false; Console.WriteLine("Goodbye!"); break;
                     default: Console.WriteLine("Invalid choice, try again."); break;
                 }
@@ -251,8 +251,21 @@
                 }
 
 
+                //Case 8 - Restock Product & Stock Level Check
+                static void Case8_Restock()
+                {
+                    Product p = PickProduct();
+                    Console.Write("Enter quantity to restock: ");
+                    int qty = int.Parse(Console.ReadLine());
+                    p.Restock(qty);
 
-
+                    if (p.StockQuantity < 10)
+                        Console.WriteLine("Stock level: Low");
+                    else if (p.StockQuantity <= 49)
+                        Console.WriteLine("Stock level: Moderate");
+                    else
+                        Console.WriteLine("Stock level: Well Stocked");
+                }
 
 
             }
