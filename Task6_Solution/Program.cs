@@ -46,6 +46,29 @@
                 Console.WriteLine("Email notification sent.");
             }
         }
+
+
+        //Create Student class 
+        class Student
+        {
+            public int Grade;
+            public string Name;
+            public string Address;
+
+            private string email;
+            int age;
+
+            public void Register(string Email)
+            {
+                email = Email;
+                SendEmail();
+            }
+
+            private void SendEmail()
+            {
+                Console.WriteLine("Registration email sent.");
+            }
+        }
         static void Main(string[] args)
         {
             
