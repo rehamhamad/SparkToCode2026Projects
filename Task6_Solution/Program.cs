@@ -154,7 +154,7 @@
                     case "4": Case4_Withdraw();  break;
                     case "5": Case5_ViewProduct(); break;
                     case "6": Case6_RegisterStudent();  break;
-                    case "7":  break;
+                    case "7": Case7_CompareBalances();  break;
                     case "8":  break;
                     case "9": running = false; Console.WriteLine("Goodbye!"); break;
                     default: Console.WriteLine("Invalid choice, try again."); break;
@@ -239,6 +239,16 @@
                     Console.WriteLine($"{s.Name} has been registered successfully.");
                 }
 
+                //Case 7 - Compare Two Account Balances
+                static void Case7_CompareBalances()
+                {
+                    if (acc1.Balance > acc2.Balance)
+                        Console.WriteLine($"{acc1.HolderName} has more money.");
+                    else if (acc2.Balance > acc1.Balance)
+                        Console.WriteLine($"{acc2.HolderName} has more money.");
+                    else
+                        Console.WriteLine("Both accounts have equal balances.");
+                }
 
 
 
