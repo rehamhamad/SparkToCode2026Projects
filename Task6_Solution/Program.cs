@@ -152,7 +152,7 @@
                     case "2": Case2_UpdateAddress();  break;
                     case "3": Case3_Deposit();  break;
                     case "4": Case4_Withdraw();  break;
-                    case "5":  break;
+                    case "5": Case5_ViewProduct(); break;
                     case "6":  break;
                     case "7":  break;
                     case "8":  break;
@@ -219,6 +219,14 @@
                     double amount = double.Parse(Console.ReadLine());
                     acc.Withdraw(amount);
                     Console.WriteLine($"Updated balance: {acc.Balance}");
+                }
+
+                //Case 5 - View Product Details
+                static void Case5_ViewProduct()
+                {
+                    Product p = PickProduct();
+                    double value = p.GetInventoryValue();
+                    Console.WriteLine($"Total inventory value: {value}");
                 }
             }
         } 
