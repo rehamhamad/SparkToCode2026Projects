@@ -142,7 +142,14 @@
                 Console.WriteLine("6. Register a Student");
                 Console.WriteLine("7. Compare Two Account Balances");
                 Console.WriteLine("8. Restock Product & Stock Level Check");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("9. Transfer Between Accounts");
+                Console.WriteLine("10. Update Student Grade (Validated)");
+                Console.WriteLine("11. Student Report Card");
+                Console.WriteLine("12. Account Health Status");
+                Console.WriteLine("13. Bulk Sale With Revenue Calculation");
+                Console.WriteLine("14. Scholarship Eligibility Check");
+                Console.WriteLine("15. Full Balance Top-Up Flow");
+                Console.WriteLine("20. Exit");
                 Console.Write("Choose an option: ");
                 string choice = Console.ReadLine();
 
@@ -156,7 +163,18 @@
                     case "6": Case6_RegisterStudent();  break;
                     case "7": Case7_CompareBalances();  break;
                     case "8": Case8_Restock(); break;
-                    case "9": running = false; Console.WriteLine("Goodbye!"); break;
+                    case "9": Case9_Transfer(); break;
+                    case "10": Case10_UpdateGrade(); break;
+                    case "11":
+                    case "12":
+                    case "13":
+                    case "14":
+                    case "15":
+                    case "16":
+                    case "17":
+                    case "18":
+                    case "19":
+                    case "20": running = false; Console.WriteLine("Goodbye!"); break;
                     default: Console.WriteLine("Invalid choice, try again."); break;
                 }
                 Console.WriteLine();
@@ -265,6 +283,52 @@
                         Console.WriteLine("Stock level: Moderate");
                     else
                         Console.WriteLine("Stock level: Well Stocked");
+                }
+
+                //Case 9 - Transfer Between Accounts
+                static void Case9_Transfer()
+                {
+                    Console.WriteLine("-- Choose SOURCE account --");
+                    BankAccount from = PickAccount();
+                    Console.WriteLine("-- Choose DESTINATION account --");
+                    BankAccount to = PickAccount();
+                    Console.Write("Enter amount to transfer: ");
+                    double amount = double.Parse(Console.ReadLine());
+
+                    if (from.Balance >= amount)
+                    {
+                        from.Withdraw(amount);
+                        to.Deposit(amount);
+                        Console.WriteLine("Transfer successful.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Transfer failed: insufficient funds in source account.");
+                    }
+                }
+
+                //Case 10 - Update Student Grade (Validated)
+                static void Case10_UpdateGrade()
+                {
+                    Student s = PickStudent();
+                    Console.Write("Enter new grade: ");
+                    string input = Console.ReadLine();
+
+                    int newGrade;
+                    bool isNumber = int.TryParse(input, out newGrade);
+
+                    if (!isNumber)
+                    {
+                        Console.WriteLine("Invalid input: not a number. No change made.");
+                        return;
+                    }
+                    if (newGrade < 0 || newGrade > 100)
+                    {
+                        Console.WriteLine("Invalid grade: must be between 0 and 100. No change made.");
+                        return;
+                    }
+                    s.Grade = newGrade;
+                    Console.WriteLine("Grade updated successfully.");
                 }
 
 
