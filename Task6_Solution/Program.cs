@@ -166,8 +166,8 @@
                     case "9": Case9_Transfer(); break;
                     case "10": Case10_UpdateGrade(); break;
                     case "11": Case11_ReportCard(); break;
-                    case "12":
-                    case "13":
+                    case "12": Case12_AccountHealth(); break;
+                    case "13": Case13_BulkSale(); break;
                     case "14":
                     case "15":
                     case "16":
@@ -341,6 +341,36 @@
                     Console.WriteLine($"Address: {s.Address}");
                     Console.WriteLine($"Grade: {s.Grade}");
                     Console.WriteLine($"Result: {result}");
+                }
+                //Case 12 - Case 12 - Account Health Status
+                static void Case12_AccountHealth()
+                {
+                    BankAccount acc = PickAccount();
+                    string status;
+                    if (acc.Balance < 50) status = "Low Balance";
+                    else if (acc.Balance <= 1000) status = "Healthy";
+                    else status = "Premium";
+                    Console.WriteLine($"Account status: {status}");
+                }
+                // Case 13 - Bulk sale With Revenue Calculation
+
+                static void Case13_BulkSale()
+                {
+                    Product p = PickProduct();
+                    Console.Write("Enter quantity to sell: ");
+                    int qty = int.Parse(Console.ReadLine());
+
+                    if (qty > p.StockQuantity)
+                    {
+                        int needed = qty - p.StockQuantity;
+                        Console.WriteLine($"Not enough stock. You need {needed} more unit(s). Sale cancelled.");
+                    }
+                    else
+                    {
+                        p.Sell(qty);
+                        double revenue = qty * p.Price;
+                        Console.WriteLine($"Sale complete. Revenue: {revenue}");
+                    }
                 }
 
 
