@@ -149,7 +149,7 @@
                 switch (choice)
                 {
                     case "1": Case1_ViewAccount(); break;
-                    case "2":  break;
+                    case "2": Case2_UpdateAddress();  break;
                     case "3":  break;
                     case "4":  break;
                     case "5":  break;
@@ -187,11 +187,19 @@
                     return input == "2" ? prod2 : prod1;
                 }
 
-                // Case 1: pick an account, call its own CheckBalance() to show info
+                // Case 1- Viw Account Details
                 static void Case1_ViewAccount()
                 {
                     BankAccount acc = PickAccount();
                     acc.CheckBalance();
+                }
+                //Case 2 - Update Student Address
+                static void Case2_UpdateAddress()
+                {
+                    Student s = PickStudent();
+                    Console.Write("Enter new address: ");
+                    s.Address = Console.ReadLine();
+                    Console.WriteLine($"Address updated to: {s.Address}");
                 }
             }
         } 
