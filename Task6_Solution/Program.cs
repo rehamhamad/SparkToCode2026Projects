@@ -168,7 +168,7 @@
                     case "11": Case11_ReportCard(); break;
                     case "12": Case12_AccountHealth(); break;
                     case "13": Case13_BulkSale(); break;
-                    case "14":
+                    case "14": Case14_Scholarship(); break;
                     case "15":
                     case "16":
                     case "17":
@@ -372,7 +372,28 @@
                         Console.WriteLine($"Sale complete. Revenue: {revenue}");
                     }
                 }
+                //Task 14 - Scholarship Eligibility Check
+                static void Case14_Scholarship()
+                {
+                    Console.WriteLine("-- Choose the student --");
+                    Student s = PickStudent();
+                    Console.WriteLine("-- Choose the account to check --");
+                    BankAccount acc = PickAccount();
 
+                    bool gradeOk = s.Grade >= 80;
+                    bool balanceOk = acc.Balance >= 100;
+
+                    if (gradeOk && balanceOk)
+                    {
+                        Console.WriteLine("Eligible");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not Eligible because:");
+                        if (!gradeOk) Console.WriteLine("- Grade is below 80");
+                        if (!balanceOk) Console.WriteLine("- Balance is below 100");
+                    }
+                }
 
 
             }
