@@ -54,6 +54,12 @@
             Balance = balance;
         }
 
+        //Task 18 - Overdrawn Account Check
+        public bool IsOverdrawn
+        {
+            get { return Balance < 0; }
+        }
+
     }
 
 
@@ -170,6 +176,7 @@
                 Console.WriteLine("15. Full Balance Top-Up Flow");
                 Console.WriteLine("16. Quick Open Account");
                 Console.WriteLine("17. Total Students Counter");
+                Console.WriteLine("18. Overdrawn Account Check");
                 Console.WriteLine("20. Exit");
                 Console.Write("Choose an option: ");
                 string choice = Console.ReadLine();
@@ -193,7 +200,7 @@
                     case "15": Case15_TopUp(); break;
                     case "16": Case16_QuickOpen();break;
                     case "17": Case17_StudentCount(); break;
-                    case "18":
+                    case "18": Case18_Overdrawn(); break;
                     case "19":
                     case "20": running = false; Console.WriteLine("Goodbye!"); break;
                     default: Console.WriteLine("Invalid choice, try again."); break;
@@ -463,7 +470,16 @@
                 }
 
 
+                //Task 18 - Overdrawn Account Check
 
+                static void Case18_Overdrawn()
+                {
+                    BankAccount acc = PickAccount();
+                    if (acc.IsOverdrawn)
+                        Console.WriteLine($"{acc.HolderName}'s account is OVERDRAWN.");
+                    else
+                        Console.WriteLine($"{acc.HolderName}'s account is not overdrawn.");
+                }
 
 
 
