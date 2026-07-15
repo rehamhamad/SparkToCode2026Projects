@@ -73,6 +73,9 @@
         private string email;
         int age;
 
+        private int pin;
+        
+
         //Case 17 - Total Students Counter
         private static int StudentCount = 0;
 
@@ -91,6 +94,20 @@
             return StudentCount;
         }
 
+        //Case 19 - Set Student Security PIN
+        public Student() { }
+
+        public Student(string name, string address, int grade)
+        {
+            Name = name;
+            Address = address;
+            Grade = grade;
+            StudentCount++; 
+        }
+        public int Pin
+        {
+            set { pin = value; }
+        }
 
     }
 
@@ -177,6 +194,7 @@
                 Console.WriteLine("16. Quick Open Account");
                 Console.WriteLine("17. Total Students Counter");
                 Console.WriteLine("18. Overdrawn Account Check");
+                Console.WriteLine("19. Set Student Security PIN");
                 Console.WriteLine("20. Exit");
                 Console.Write("Choose an option: ");
                 string choice = Console.ReadLine();
@@ -201,7 +219,7 @@
                     case "16": Case16_QuickOpen();break;
                     case "17": Case17_StudentCount(); break;
                     case "18": Case18_Overdrawn(); break;
-                    case "19":
+                    case "19": Case19_SetPin(); break;
                     case "20": running = false; Console.WriteLine("Goodbye!"); break;
                     default: Console.WriteLine("Invalid choice, try again."); break;
                 }
@@ -481,8 +499,16 @@
                         Console.WriteLine($"{acc.HolderName}'s account is not overdrawn.");
                 }
 
+                //Set Student Security PIN
 
-
+                static void Case19_SetPin()
+                {
+                    Student s = PickStudent();
+                    Console.Write("Enter a 4-digit PIN: ");
+                    int pin = int.Parse(Console.ReadLine());
+                    s.Pin = pin;
+                    Console.WriteLine("PIN has been set successfully.");
+                }
 
 
 
