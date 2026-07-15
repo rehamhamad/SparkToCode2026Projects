@@ -24,8 +24,9 @@
             else
             {
                 Console.WriteLine("Insufficient balance.");
+                
             }
-            SendEmail();
+            
         }
 
         public double CheckBalance()
@@ -44,6 +45,15 @@
         {
             Console.WriteLine("Email notification sent.");
         }
+
+        //Task 16 - Quick Account Opening
+        public BankAccount(int accountNumber, string holderName, double balance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = balance;
+        }
+
     }
 
 
@@ -119,8 +129,8 @@
     internal class Program
     {
         // 6 objects 
-        static BankAccount acc1 = new BankAccount { AccountNumber = 1163, HolderName = "karim", Balance = 120 };
-        static BankAccount acc2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 63 };
+        static BankAccount acc1 = new BankAccount( 1163, "karim",  120 );
+        static BankAccount acc2 = new BankAccount( 15203, "Ali",  63 );
 
         static Student stu1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
         static Student stu2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 70 };
@@ -149,6 +159,7 @@
                 Console.WriteLine("13. Bulk Sale With Revenue Calculation");
                 Console.WriteLine("14. Scholarship Eligibility Check");
                 Console.WriteLine("15. Full Balance Top-Up Flow");
+                Console.WriteLine("16. Quick Open Account");
                 Console.WriteLine("20. Exit");
                 Console.Write("Choose an option: ");
                 string choice = Console.ReadLine();
@@ -156,12 +167,12 @@
                 switch (choice)
                 {
                     case "1": Case1_ViewAccount(); break;
-                    case "2": Case2_UpdateAddress();  break;
-                    case "3": Case3_Deposit();  break;
-                    case "4": Case4_Withdraw();  break;
+                    case "2": Case2_UpdateAddress(); break;
+                    case "3": Case3_Deposit(); break;
+                    case "4": Case4_Withdraw(); break;
                     case "5": Case5_ViewProduct(); break;
-                    case "6": Case6_RegisterStudent();  break;
-                    case "7": Case7_CompareBalances();  break;
+                    case "6": Case6_RegisterStudent(); break;
+                    case "7": Case7_CompareBalances(); break;
                     case "8": Case8_Restock(); break;
                     case "9": Case9_Transfer(); break;
                     case "10": Case10_UpdateGrade(); break;
@@ -169,8 +180,8 @@
                     case "12": Case12_AccountHealth(); break;
                     case "13": Case13_BulkSale(); break;
                     case "14": Case14_Scholarship(); break;
-                    case "15":
-                    case "16":
+                    case "15": Case15_TopUp(); break;
+                    case "16": Case16_QuickOpen();break;
                     case "17":
                     case "18":
                     case "19":
@@ -395,8 +406,62 @@
                     }
                 }
 
+                //Case 15 - Full Balance Top-Up Flow
+
+                static void Case15_TopUp()
+                {
+                    BankAccount acc = PickAccount();
+                    double before = acc.Balance;
+
+                    if (before < 50)
+                    {
+                        double topUp = 100 - before;
+                        acc.Deposit(topUp);
+                        Console.WriteLine($"Balance before: {before}");
+                        Console.WriteLine($"Balance after: {acc.Balance}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No top-up needed.");
+                    }
+
+                }
+
+                //Task 16 - Quick Account Opening
+
+                static void Case16_QuickOpen()
+                {
+                    Console.Write("Enter new account number: ");
+                    int number = int.Parse(Console.ReadLine());
+                    Console.Write("Enter holder name: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter starting balance: ");
+                    double balance = double.Parse(Console.ReadLine());
+
+                    BankAccount extraAccount = new BankAccount(number, name, balance);
+
+                    Console.WriteLine("New account created:");
+                    Console.WriteLine($"Number: {extraAccount.AccountNumber}, Holder: {extraAccount.HolderName}, Balance: {extraAccount.Balance}");
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             }
-        } 
+        }
     }
- }
+}
