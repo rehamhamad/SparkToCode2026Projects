@@ -67,6 +67,9 @@
         private string email;
         int age;
 
+        //Case 17 - Total Students Counter
+        private static int StudentCount = 0;
+
         public void Register(string Email)
         {
             email = Email;
@@ -77,6 +80,12 @@
         {
             Console.WriteLine("Registration email sent.");
         }
+        public static int GetStudentCount()
+        {
+            return StudentCount;
+        }
+
+
     }
 
 
@@ -160,6 +169,7 @@
                 Console.WriteLine("14. Scholarship Eligibility Check");
                 Console.WriteLine("15. Full Balance Top-Up Flow");
                 Console.WriteLine("16. Quick Open Account");
+                Console.WriteLine("17. Total Students Counter");
                 Console.WriteLine("20. Exit");
                 Console.Write("Choose an option: ");
                 string choice = Console.ReadLine();
@@ -182,7 +192,7 @@
                     case "14": Case14_Scholarship(); break;
                     case "15": Case15_TopUp(); break;
                     case "16": Case16_QuickOpen();break;
-                    case "17":
+                    case "17": Case17_StudentCount(); break;
                     case "18":
                     case "19":
                     case "20": running = false; Console.WriteLine("Goodbye!"); break;
@@ -444,8 +454,13 @@
                     Console.WriteLine($"Number: {extraAccount.AccountNumber}, Holder: {extraAccount.HolderName}, Balance: {extraAccount.Balance}");
                 }
 
+                //Case 17 - Total Students Counter
 
-
+                static void Case17_StudentCount()
+                {
+                    int total = Student.GetStudentCount();
+                    Console.WriteLine($"Total students created so far: {total}");
+                }
 
 
 
