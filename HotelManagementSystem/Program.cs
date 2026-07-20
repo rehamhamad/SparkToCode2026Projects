@@ -86,5 +86,55 @@
         }
 
 
+        static int ReadPositiveInt(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int value) && value > 0)
+                    return value;
+                Console.WriteLine("Invalid input. Please enter a positive whole number.");
+            }
+        }
+
+        //input helpers 
+
+        static decimal ReadPositiveDecimal(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (decimal.TryParse(input, out decimal value) && value > 0)
+                    return value;
+                Console.WriteLine("Invalid input. Please enter a positive number.");
+            }
+        }
+
+        static string ReadNonEmptyString(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    return input.Trim();
+                Console.WriteLine("Input cannot be empty.");
+            }
+        }
+
+        // Looks up the nightly price for the room a guest currently holds.
+        // Returns 0 if the guest has no room or the room can't be found.
+        static decimal GetPriceForGuest(Guest guest)
+        {
+            if (guest.RoomNumber == Guest.NoRoomAssigned) return 0m;
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == guest.RoomNumber);
+            return room != null ? room.PricePerNight : 0m;
+        }
+
+       
+
+
     }
 }
