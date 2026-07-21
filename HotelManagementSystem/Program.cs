@@ -18,7 +18,7 @@
 
                 switch (choice)
                 {
-                    case "1": break;
+                    case "1": Case01_AddNewRoom(); break;
                     case "2": break;
                     case "3": break;
                     case "4": break;
@@ -124,16 +124,36 @@
             }
         }
 
-        // Looks up the nightly price for the room a guest currently holds.
-        // Returns 0 if the guest has no room or the room can't be found.
-        static decimal GetPriceForGuest(Guest guest)
+          static decimal GetPriceForGuest(Guest guest)
         {
             if (guest.RoomNumber == Guest.NoRoomAssigned) return 0m;
             Room room = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == guest.RoomNumber);
             return room != null ? room.PricePerNight : 0m;
         }
 
-       
+        // Case 01: Add New Room
+        static void Case01_AddNewRoom()
+        {
+            Console.WriteLine("--- Add New Room ---");
+            int roomNumber = ReadPositiveInt("Enter room number: ");
+
+            // Requirement: Use LINQ Any() for the duplicate check.
+            if (rooms.Any(r => r.RoomNumber == roomNumber))
+            {
+                Console.WriteLine($"Error: Room {roomNumber} already exists.");
+                return;
+            }
+
+            string roomType = ReadNonEmptyString("Enter room type (Single/Double/Suite): ");
+            decimal price = ReadPositiveDecimal("Enter price per night: ");
+
+            Room newRoom = new Room(roomNumber, roomType, price, true);
+            rooms.Add(newRoom);
+
+            Console.WriteLine("\nRoom added successfully!");
+            newRoom.DisplayRoom();
+            Console.WriteLine($"Total rooms in system: {rooms.Count}");
+        }
 
 
     }
