@@ -27,7 +27,7 @@
                     case "7": Case07_GuestBookingStatistics(); break;
                     case "8": Case08_UpdateRoomPrice(); break;
                     case "9": Case09_GuestLookupByName(); break;
-                    case "10": break;
+                    case "10": Case10_RoomTypeBreakdown(); break;
                     case "11": break;
                     case "12": break;
                     case "13": break;
@@ -437,5 +437,31 @@
             }
         }
 
+        // Case 10: Room Type Breakdown Report
+        static void Case10_RoomTypeBreakdown()
+        {
+            Console.WriteLine("--- Room Type Breakdown Report ---");
+            string[] types = { "Single", "Double", "Suite" };
+
+            foreach (string type in types)
+            {
+                int count = rooms.Count(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase));
+                string avgText;
+                if (count > 0)
+                {
+                    decimal avg = rooms.Where(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase))
+                                        .Average(r => r.PricePerNight);
+                    avgText = $"OMR {avg:F2}";
+                }
+                else
+                {
+                    avgText = "N/A";
+                }
+                Console.WriteLine($"{type,-8} | Count: {count,-3} | Average Price: {avgText}");
+            }
+
+            string overallAvg = rooms.Any() ? $"OMR {rooms.Average(r => r.PricePerNight):F2}" : "N/A";
+            Console.WriteLine($"\nOverall average price across all rooms: {overallAvg}");
+        }
     }
 }
