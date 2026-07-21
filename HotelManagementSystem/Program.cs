@@ -25,7 +25,7 @@
                     case "5": Case05_ViewAllGuests(); break;
                     case "6": Case06_SearchFilterRooms(); break;
                     case "7": Case07_GuestBookingStatistics(); break;
-                    case "8": break;
+                    case "8": Case08_UpdateRoomPrice(); break;
                     case "9": break;
                     case "10": break;
                     case "11": break;
@@ -395,6 +395,25 @@
             }
         }
 
+        // Case 08: Update Room Price
+        static void Case08_UpdateRoomPrice()
+        {
+            Console.WriteLine("--- Update Room Price ---");
+            int roomNumber = ReadPositiveInt("Enter room number: ");
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+            if (room == null)
+            {
+                Console.WriteLine($"Error: No room found with number {roomNumber}.");
+                return;
+            }
+
+            decimal newPrice = ReadPositiveDecimal("Enter new price per night: ");
+            decimal oldPrice = room.PricePerNight;
+            room.PricePerNight = newPrice;
+
+            Console.WriteLine($"\nRoom {room.RoomNumber} price updated: OMR {oldPrice:F2} -> OMR {newPrice:F2}");
+        }
 
 
 
