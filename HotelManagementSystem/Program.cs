@@ -21,7 +21,7 @@
                     case "1": Case01_AddNewRoom(); break;
                     case "2": Case02_RegisterNewGuest(); break;
                     case "3": Case03_BookRoom(); break;
-                    case "4": break;
+                    case "4": Case04_ViewAllRooms(); break;
                     case "5": break;
                     case "6": break;
                     case "7": break;
@@ -211,5 +211,24 @@
             Console.WriteLine($"Total nights: {guest.TotalNights}");
             Console.WriteLine($"Total cost: OMR {totalCost:F2}");
         }
+
+        // Case 04: View All Rooms
+        static void Case04_ViewAllRooms()
+        {
+            Console.WriteLine("--- View All Rooms ---");
+            if (!rooms.Any())
+            {
+                Console.WriteLine("No rooms have been added yet.");
+                return;
+            }
+
+            var sortedRooms = rooms.OrderBy(r => r.RoomNumber).Select(r => r);
+            Console.WriteLine($"Total rooms: {rooms.Count()}\n");
+            foreach (Room room in sortedRooms)
+            {
+                room.DisplayRoom();
+            }
+        }
+
     }
 }
