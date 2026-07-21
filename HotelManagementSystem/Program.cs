@@ -24,7 +24,7 @@
                     case "4": Case04_ViewAllRooms(); break;
                     case "5": Case05_ViewAllGuests(); break;
                     case "6": Case06_SearchFilterRooms(); break;
-                    case "7": break;
+                    case "7": Case07_GuestBookingStatistics(); break;
                     case "8": break;
                     case "9": break;
                     case "10": break;
@@ -346,5 +346,57 @@
 
             }
         }
+
+
+        // Case 07: Guest & Booking Statistics
+        static void Case07_GuestBookingStatistics()
+        {
+            Console.WriteLine("--- Guest & Booking Statistics ---");
+
+            int totalGuests = guests.Count();
+            int guestsWithRoom = guests.Count(g => g.RoomNumber != Guest.NoRoomAssigned);
+            int totalRooms = rooms.Count();
+            int bookedRooms = rooms.Count(r => !r.IsAvailable);
+
+            Console.WriteLine($"Total registered guests: {totalGuests}");
+            Console.WriteLine($"Guests with a room assigned: {guestsWithRoom}");
+            Console.WriteLine($"Total rooms: {totalRooms}");
+            Console.WriteLine($"Booked rooms: {bookedRooms}");
+
+            var activeGuests = guests.Where(g => g.RoomNumber != Guest.NoRoomAssigned).ToList();
+
+
+            if (!activeGuests.Any())
+            {
+                Console.WriteLine("No active bookings recorded.");
+                return;
+            }
+
+            double avgNights = activeGuests.Average(g => g.TotalNights);
+            Console.WriteLine($"Average nights (active bookings): {avgNights:F2}");
+
+            Console.WriteLine("\nTop 3 highest-spending guests:");
+            var top3 = activeGuests
+                .OrderByDescending(g => g.CalculateTotalCost(GetPriceForGuest(g)))
+                .Take(3);
+            foreach (Guest g in top3)
+            {
+                decimal cost = g.CalculateTotalCost(GetPriceForGuest(g));
+                Console.WriteLine($"  {g.GuestName} - Room {g.RoomNumber} - OMR {cost:F2}");
+            }
+
+
+            Console.WriteLine("\nBooking summary:");
+            var summaryLines = activeGuests.Select(g =>
+                $"{g.GuestName} - Room {g.RoomNumber} - {g.TotalNights} nights - OMR {g.CalculateTotalCost(GetPriceForGuest(g)):F2}");
+            foreach (string line in summaryLines)
+            {
+                Console.WriteLine($"  {line}");
+            }
+        }
+
+
+
+
     }
 }
