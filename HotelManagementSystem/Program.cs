@@ -26,7 +26,7 @@
                     case "6": Case06_SearchFilterRooms(); break;
                     case "7": Case07_GuestBookingStatistics(); break;
                     case "8": Case08_UpdateRoomPrice(); break;
-                    case "9": break;
+                    case "9": Case09_GuestLookupByName(); break;
                     case "10": break;
                     case "11": break;
                     case "12": break;
@@ -415,7 +415,27 @@
             Console.WriteLine($"\nRoom {room.RoomNumber} price updated: OMR {oldPrice:F2} -> OMR {newPrice:F2}");
         }
 
+        // Case 09: Guest Lookup by Name
+        static void Case09_GuestLookupByName()
+        {
+            Console.WriteLine("--- Guest Lookup by Name ---");
+            string search = ReadNonEmptyString("Enter name or partial name to search: ");
 
+            var matches = guests.Where(g => g.GuestName.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                                 .ToList();
+
+            if (!matches.Any())
+            {
+                Console.WriteLine("No guests matched that search.");
+                return;
+            }
+
+            Console.WriteLine($"Matches found: {matches.Count()}");
+            foreach (Guest g in matches)
+            {
+                Console.WriteLine($"  ID: {g.GuestId} | Name: {g.GuestName} | Room: {g.RoomNumber}");
+            }
+        }
 
     }
 }
