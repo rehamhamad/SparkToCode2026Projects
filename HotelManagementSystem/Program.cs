@@ -23,16 +23,16 @@
                     case "3": Case03_BookRoom(); break;
                     case "4": Case04_ViewAllRooms(); break;
                     case "5": Case05_ViewAllGuests(); break;
-                    case "6": break;
+                    case "6": Case06_SearchFilterRooms(); break;
                     case "7": break;
                     case "8": break;
                     case "9": break;
-                    case "10":break;
-                    case "11":break;
-                    case "12":break;
-                    case "13":break;
-                    case "14":break;
-                    case "15":break;
+                    case "10": break;
+                    case "11": break;
+                    case "12": break;
+                    case "13": break;
+                    case "14": break;
+                    case "15": break;
                     case "0":
                         running = false;
                         Console.WriteLine("Thank you for using Grand Vista Hotel Management System. Goodbye!");
@@ -124,7 +124,7 @@
             }
         }
 
-          static decimal GetPriceForGuest(Guest guest)
+        static decimal GetPriceForGuest(Guest guest)
         {
             if (guest.RoomNumber == Guest.NoRoomAssigned) return 0m;
             Room room = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == guest.RoomNumber);
@@ -248,8 +248,103 @@
             }
         }
 
+        // Case 06: Search & Filter Rooms
+        static void Case06_SearchFilterRooms()
+        {
+            bool inSubMenu = true;
+            while (inSubMenu)
+            {
+                Console.WriteLine("\n--- Search & Filter Rooms ---");
+                Console.WriteLine("1. Show all available rooms");
+                Console.WriteLine("2. Filter by room type");
+                Console.WriteLine("3. Filter by max price");
+                Console.WriteLine("4. Room price statistics");
+                Console.WriteLine("0. Back");
+                Console.Write("Enter your choice: ");
+                string sub = Console.ReadLine();
+                Console.WriteLine();
 
+                switch (sub)
+                {
+                    case "1":
+                        {
+                            var available = rooms.Where(r => r.IsAvailable)
+                                                  .OrderBy(r => r.PricePerNight)
+                                                  .ToList();
+                            if (!available.Any())
+                            {
+                                Console.WriteLine("No rooms found for the selected criteria.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Available rooms: {available.Count}");
+                                foreach (Room r in available) r.DisplayRoom();
+                            }
+                            break;
+                        }
+                    case "2":
+                        {
+                            string type = ReadNonEmptyString("Enter room type to filter by: ");
+                            var matches = rooms.Where(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase))
+                                                .ToList();
+                            if (!matches.Any())
+                            {
+                                Console.WriteLine("No rooms found for the selected criteria.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Rooms of type '{type}': {matches.Count}");
+                                foreach (Room r in matches) r.DisplayRoom();
+                            }
+                            break;
+                        }
+                    case "3":
+                        {
+                            decimal maxPrice = ReadPositiveDecimal("Enter maximum price: ");
+                            var matches = rooms.Where(r => r.IsAvailable && r.PricePerNight <= maxPrice)
+                                                .OrderBy(r => r.PricePerNight)
+                                                .ToList();
+                            if (!matches.Any())
+                            {
+                                Console.WriteLine("No rooms found for the selected criteria.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Available rooms at or below OMR {maxPrice:F2}: {matches.Count}");
+                                foreach (Room r in matches) r.DisplayRoom();
+                            }
+                            break;
+                        }
+                    case "4":
+                        {
+                            if (!rooms.Any())
+                            {
+                                Console.WriteLine("No rooms found for the selected criteria.");
+                                break;
+                            }
+                            int total = rooms.Count();
+                            int available = rooms.Count(r => r.IsAvailable);
+                            decimal avg = rooms.Average(r => r.PricePerNight);
+                            decimal min = rooms.Min(r => r.PricePerNight);
+                            decimal max = rooms.Max(r => r.PricePerNight);
 
+                            Console.WriteLine("Room Price Statistics:");
+                            Console.WriteLine($"  Total rooms:      {total}");
+                            Console.WriteLine($"  Available rooms:  {available}");
+                            Console.WriteLine($"  Average price:    OMR {avg:F2}");
+                            Console.WriteLine($"  Cheapest price:   OMR {min:F2}");
+                            Console.WriteLine($"  Most expensive:   OMR {max:F2}");
+                            break;
+                        }
+                    case "0":
+                        inSubMenu = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
 
+            }
+        }
     }
 }
