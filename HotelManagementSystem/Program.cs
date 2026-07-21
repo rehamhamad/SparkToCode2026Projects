@@ -22,7 +22,7 @@
                     case "2": Case02_RegisterNewGuest(); break;
                     case "3": Case03_BookRoom(); break;
                     case "4": Case04_ViewAllRooms(); break;
-                    case "5": break;
+                    case "5": Case05_ViewAllGuests(); break;
                     case "6": break;
                     case "7": break;
                     case "8": break;
@@ -229,6 +229,27 @@
                 room.DisplayRoom();
             }
         }
+
+        // Case 05: View All Guests
+        static void Case05_ViewAllGuests()
+        {
+            Console.WriteLine("--- View All Guests ---");
+            if (!guests.Any())
+            {
+                Console.WriteLine("No guests have been registered yet.");
+                return;
+            }
+
+            var sortedGuests = guests.OrderBy(g => g.GuestName).Select(g => g);
+            Console.WriteLine($"Total guests: {guests.Count()}\n");
+            foreach (Guest guest in sortedGuests)
+            {
+                guest.DisplayGuest();
+            }
+        }
+
+
+
 
     }
 }
