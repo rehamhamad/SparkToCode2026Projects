@@ -20,7 +20,7 @@
                 {
                     case "1": Case01_AddNewRoom(); break;
                     case "2": Case02_RegisterNewGuest(); break;
-                    case "3": break;
+                    case "3": Case03_BookRoom(); break;
                     case "4": break;
                     case "5": break;
                     case "6": break;
@@ -172,5 +172,44 @@
             newGuest.DisplayGuest();
         }
 
+
+        // Case 03: Book a Room for a Guest
+        static void Case03_BookRoom()
+        {
+            Console.WriteLine("--- Book a Room for a Guest ---");
+            string guestId = ReadNonEmptyString("Enter guest ID: ");
+
+            Guest guest = guests.FirstOrDefault(g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+            if (guest == null)
+            {
+                Console.WriteLine($"Error: No guest found with ID '{guestId}'.");
+                return;
+            }
+
+            int roomNumber = ReadPositiveInt("Enter room number to book: ");
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+            if (room == null)
+            {
+                Console.WriteLine($"Error: No room found with number {roomNumber}.");
+                return;
+            }
+
+            if (!room.IsAvailable)
+            {
+                Console.WriteLine("Room is already booked.");
+                return;
+            }
+            guest.RoomNumber = room.RoomNumber.ToString();
+            room.IsAvailable = false;
+
+            decimal totalCost = guest.CalculateTotalCost(room.PricePerNight);
+
+            Console.WriteLine("\nBooking confirmed!");
+            Console.WriteLine($"Guest: {guest.GuestName}");
+            Console.WriteLine($"Room: {room.RoomNumber} ({room.RoomType})");
+            Console.WriteLine($"Price per night: OMR {room.PricePerNight:F2}");
+            Console.WriteLine($"Total nights: {guest.TotalNights}");
+            Console.WriteLine($"Total cost: OMR {totalCost:F2}");
+        }
     }
 }
