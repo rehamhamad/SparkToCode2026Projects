@@ -19,7 +19,7 @@
                 switch (choice)
                 {
                     case "1": Case01_AddNewRoom(); break;
-                    case "2": break;
+                    case "2": Case02_RegisterNewGuest(); break;
                     case "3": break;
                     case "4": break;
                     case "5": break;
@@ -155,6 +155,22 @@
             Console.WriteLine($"Total rooms in system: {rooms.Count}");
         }
 
+        // Case 02: Register New Guest
+        static void Case02_RegisterNewGuest()
+        {
+            Console.WriteLine("--- Register New Guest ---");
+            string name = ReadNonEmptyString("Enter guest name: ");
+            string checkInDate = ReadNonEmptyString("Enter check-in date (e.g. 2026-07-20): ");
+            int nights = ReadPositiveInt("Enter number of nights: ");
+
+            string guestId = $"G{(guests.Count + 1):D3}";
+            Guest newGuest = new Guest(guestId, name, checkInDate, nights);
+            guests.Add(newGuest);
+
+            Console.WriteLine("\nGuest registered successfully!");
+            Console.WriteLine($"Guest ID: {newGuest.GuestId}");
+            newGuest.DisplayGuest();
+        }
 
     }
 }
