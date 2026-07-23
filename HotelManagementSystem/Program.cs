@@ -28,8 +28,8 @@
                     case "8": Case08_UpdateRoomPrice(); break;
                     case "9": Case09_GuestLookupByName(); break;
                     case "10": Case10_RoomTypeBreakdown(); break;
-                    case "11": break;
-                    case "12": break;
+                    case "11": Case10_RoomTypeBreakdown(); break;
+                    case "12": Case11_CheckOutGuest(); break;
                     case "13": break;
                     case "14": break;
                     case "15": break;
@@ -463,5 +463,61 @@
             string overallAvg = rooms.Any() ? $"OMR {rooms.Average(r => r.PricePerNight):F2}" : "N/A";
             Console.WriteLine($"\nOverall average price across all rooms: {overallAvg}");
         }
+
+        // Case 11: Check Out a Guest
+        static void Case11_CheckOutGuest()
+        {
+            Console.WriteLine("--- Check Out a Guest ---");
+            string guestId = ReadNonEmptyString("Enter guest ID: ");
+
+            Guest guest = guests.FirstOrDefault(g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+            if (guest == null)
+            {
+                Console.WriteLine($"Error: No guest found with ID '{guestId}'.");
+                return;
+            }
+
+            if (guest.RoomNumber == Guest.NoRoomAssigned)
+            {
+                Console.WriteLine("This guest has no active booking.");
+                return;
+            }
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == guest.RoomNumber);
+
+            decimal pricePerNight = room != null ? room.PricePerNight : 0m;
+            decimal totalCost = guest.CalculateTotalCost(pricePerNight);
+
+            Console.WriteLine("\n--- Final Bill ---");
+            Console.WriteLine($"Guest: {guest.GuestName}");
+            Console.WriteLine($"Room: {guest.RoomNumber} ({(room != null ? room.RoomType : "Unknown")})");
+            Console.WriteLine($"Check-in date: {guest.CheckInDate}");
+            Console.WriteLine($"Total nights: {guest.TotalNights}");
+            Console.WriteLine($"Price per night: OMR {pricePerNight:F2}");
+            Console.WriteLine($"Total cost: OMR {totalCost:F2}");
+
+            Console.Write("\nConfirm checkout? (Y/N): ");
+            string confirm = Console.ReadLine();
+
+            if (!confirm.Trim().Equals("Y", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Checkout cancelled. No changes made.");
+                return;
+            }
+            if (room != null)
+            {
+                room.IsAvailable = true;
+            }
+            guests.Remove(guest);
+
+            Console.WriteLine("\nCheckout complete.");
+            Console.WriteLine($"Remaining guests: {guests.Count}");
+            Console.WriteLine($"Total rooms: {rooms.Count}");
+            if (room != null)
+            {
+                bool nowAvailable = rooms.Any(r => r.RoomNumber == room.RoomNumber && r.IsAvailable);
+                Console.WriteLine($"Room {room.RoomNumber} is now available: {nowAvailable}");
+            }
+        }
+
     }
 }
