@@ -1,4 +1,5 @@
 <Solution>
+  <Folder Name="/DataBase/" />
   <Project Path="HotelManagementSystem/HotelManagementSystem.csproj" Id="60ad2cfd-2613-413c-97e1-aa212f18555e" />
   <Project Path="miniproject1_solution/miniproject1_solution.csproj" Id="7cfa21e8-d5c1-4edf-bfde-87a195ff672b" />
   <Project Path="Task 3/Task3_Solutions.csproj" Id="0f7a78ed-03cc-43b2-8b3c-aaa93d36466e" />
